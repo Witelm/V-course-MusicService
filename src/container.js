@@ -7,10 +7,9 @@ function Container() {
     <div className="container">
       <main className="main">
         <Main />
-      </main>
-      <div className="bar">
         <Bar />
-      </div>
+      </main>
+
       <footer></footer>
     </div>
   )
