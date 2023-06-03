@@ -33,7 +33,6 @@ function Nav() {
     </nav>
   )
 }
-
 function Main() {
   return (
     <main className="main">
