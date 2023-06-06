@@ -1,44 +1,5 @@
-import React, { useState } from 'react'
-import { Drop } from '../utils/utils'
-
-function Nav() {
-  const [visible, setVisible] = useState(false)
-  const toggleVisibility = () => setVisible(!visible)
-
-  return (
-    <nav className="main__nav nav">
-      <div className="nav__logo logo">
-        <img className="logo__image" src="img/logo.png" alt="logo"></img>
-      </div>
-      <div className="nav__burger burger" onClick={toggleVisibility}>
-        <span className="burger__line"></span>
-        <span className="burger__line"></span>
-        <span className="burger__line"></span>
-      </div>
-      {visible && (
-        <div className="nav__menu menu">
-          <ul className="menu__list">
-            <li className="menu__item">
-              <a href="http://" className="menu__link">
-                Главное
-              </a>
-            </li>
-            <li className="menu__item">
-              <a href="http://" className="menu__link">
-                Мой плейлист
-              </a>
-            </li>
-            <li className="menu__item">
-              <a href="http://" className="menu__link">
-                Войти
-              </a>
-            </li>
-          </ul>
-        </div>
-      )}
-    </nav>
-  )
-}
+import { useState } from 'react'
+import { Drop } from './Drop'
 
 function CenterBlock() {
   const [visible, setVisible] = useState(false)
@@ -456,56 +417,4 @@ function CenterBlock() {
   )
 }
 
-function SideBar() {
-  return (
-    <div className="main__sidebar sidebar">
-      <div className="sidebar__personal">
-        <p className="sidebar__personal-name">Sergey.Ivanov</p>
-        <div className="sidebar__avatar"></div>
-      </div>
-      <div className="sidebar__block">
-        <div className="sidebar__list">
-          <div className="sidebar__item">
-            <a className="sidebar__link" href="#">
-              <img
-                className="sidebar__img"
-                src="img/playlist01.png"
-                alt="day's playlist"
-              ></img>
-            </a>
-          </div>
-          <div className="sidebar__item">
-            <a className="sidebar__link" href="#">
-              <img
-                className="sidebar__img"
-                src="img/playlist02.png"
-                alt="day's playlist"
-              ></img>
-            </a>
-          </div>
-          <div className="sidebar__item">
-            <a className="sidebar__link" href="#">
-              <img
-                className="sidebar__img"
-                src="img/playlist03.png"
-                alt="day's playlist"
-              ></img>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function Main() {
-  return (
-    <main className="main">
-      <Nav />
-      <CenterBlock />
-      <SideBar />
-    </main>
-  )
-}
-
-export default Main
+export default CenterBlock

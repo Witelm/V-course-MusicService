@@ -1,7 +1,7 @@
 import React from 'react'
-import Main from './bricks/main'
-import Bar from './bricks/bar'
-import Footer from './bricks/footer'
+import Main from './bricks/Main'
+import Bar from './bricks/Bar'
+import Footer from './bricks/Footer'
 
 function Container() {
   return (
