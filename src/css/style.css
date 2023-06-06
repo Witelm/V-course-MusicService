@@ -877,3 +877,29 @@ body {
 .volume__progress-line {
   width: 109px;
 }
+
+.dropdown {
+  position: relative;
+  margin-right: 10px;
+}
+
+.dropdown ul {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50px;
+  width: -webkit-fill-available;
+  background: #4e4e4e;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.dropdown-item {
+  font-family: StratosSkyeng;
+  color: #ffffff;
+}
+.dropdown-item:hover {
+  border-color: #d9b6ff;
+  color: #d9b6ff;
+  cursor: pointer;
+}

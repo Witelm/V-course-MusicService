@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Drop } from '../utils/utils'
 
 function Nav() {
   const [visible, setVisible] = useState(false)
@@ -40,6 +41,11 @@ function Nav() {
 }
 
 function CenterBlock() {
+  const [visible, setVisible] = useState(false)
+  const toggleVisibility = () => {
+    setVisible(!visible)
+  }
+
   return (
     <div className="main__centerblock centerblock">
       <div className="centerblock__search search">
@@ -56,9 +62,13 @@ function CenterBlock() {
       <h2 className="centerblock__h2">Треки</h2>
       <div className="centerblock__filter filter">
         <div className="filter__title">Искать по:</div>
-        <div className="filter__button button-author _btn-text">
-          исполнителю
+        <div className="dropdown filter__button">
+          <div className=" button-author _btn-text" onClick={toggleVisibility}>
+            исполнителю
+          </div>
+          {visible && <Drop />}
         </div>
+
         <div className="filter__button button-year _btn-text">году выпуска</div>
         <div className="filter__button button-genre _btn-text">жанру</div>
       </div>
