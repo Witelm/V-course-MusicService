@@ -1,10 +1,28 @@
 import { useState } from 'react'
 import { Drop } from './Drop'
+import PlayListItem from './PlayListItem'
 
 function CenterBlock() {
-  const [visible, setVisible] = useState(false)
-  const toggleVisibility = () => {
-    setVisible(!visible)
+  const [visibleAuthor, setVisibleAuthor] = useState(false)
+  const [visibleZhanr, setVisibleZhanr] = useState(false)
+  const [visibleYear, setVisibleYear] = useState(false)
+
+  const toggleVisibilityAuthor = () => {
+    setVisibleAuthor(!visibleAuthor)
+    setVisibleZhanr(false)
+    setVisibleYear(false)
+  }
+
+  const toggleVisibilityZhanr = () => {
+    setVisibleZhanr(!visibleZhanr)
+    setVisibleAuthor(false)
+    setVisibleYear(false)
+  }
+
+  const toggleVisibilityYear = () => {
+    setVisibleYear(!visibleYear)
+    setVisibleAuthor(false)
+    setVisibleZhanr(false)
   }
 
   return (
@@ -23,15 +41,26 @@ function CenterBlock() {
       <h2 className="centerblock__h2">Треки</h2>
       <div className="centerblock__filter filter">
         <div className="filter__title">Искать по:</div>
-        <div className="dropdown filter__button">
-          <div className=" button-author _btn-text" onClick={toggleVisibility}>
-            исполнителю
-          </div>
-          {visible && <Drop />}
+
+        <div
+          className="dropdown filter__button button-author _btn-text"
+          onClick={toggleVisibilityAuthor}
+        >
+          исполнителю {visibleAuthor && <Drop />}
         </div>
 
-        <div className="filter__button button-year _btn-text">году выпуска</div>
-        <div className="filter__button button-genre _btn-text">жанру</div>
+        <div
+          className="dropdown filter__button button-year _btn-text"
+          onClick={toggleVisibilityYear}
+        >
+          году выпуска {visibleYear && <Drop />}
+        </div>
+        <div
+          className=" dropdown filter__button button-genre _btn-text"
+          onClick={toggleVisibilityZhanr}
+        >
+          жанру {visibleZhanr && <Drop />}
+        </div>
       </div>
       <div className="centerblock__content">
         <div className="content__title playlist-title">
@@ -45,7 +74,11 @@ function CenterBlock() {
           </div>
         </div>
         <div className="content__playlist playlist">
-          <div className="playlist__item">
+          {Array.from({ length: 11 }).map((item, index) => (
+            <PlayListItem key={index} />
+          ))}
+
+          {/* <div className="playlist__item">
             <div className="playlist__track track">
               <div className="track__title">
                 <div className="track__title-image">
@@ -410,7 +443,7 @@ function CenterBlock() {
                 <span className="track__time-text"></span>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

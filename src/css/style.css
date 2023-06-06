@@ -895,7 +895,7 @@ body {
 }
 
 .dropdown-item {
-  font-family: StratosSkyeng;
+  font-family: 'StratosSkyeng';
   color: #ffffff;
 }
 .dropdown-item:hover {
