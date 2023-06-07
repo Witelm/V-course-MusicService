@@ -2,6 +2,14 @@ import { useState } from 'react'
 import { Drop } from './Drop'
 import PlayListItem from './PlayListItem'
 
+const track = {
+  title: 'Non Stop',
+  titleAdd: 'Remix',
+  author: 'Стоункат, Psychopath',
+  album: 'Non Stop',
+  time: '4.12',
+}
+
 function CenterBlock() {
   const [visibleAuthor, setVisibleAuthor] = useState(false)
   const [visibleZhanr, setVisibleZhanr] = useState(false)
@@ -75,7 +83,7 @@ function CenterBlock() {
         </div>
         <div className="content__playlist playlist">
           {Array.from({ length: 11 }).map((item, index) => (
-            <PlayListItem key={index} />
+            <PlayListItem {...track} key={index} />
           ))}
 
           {/* <div className="playlist__item">

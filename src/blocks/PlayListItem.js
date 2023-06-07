@@ -1,12 +1,4 @@
-const track = {
-  title: 'Non Stop',
-  titleAdd: 'Remix',
-  author: 'Стоункат, Psychopath',
-  album: 'Non Stop',
-  time: '4.12',
-}
-
-function PlayListItem() {
+function PlayListItem(props) {
   return (
     <div className="playlist__item">
       <div className="playlist__track track">
@@ -18,25 +10,26 @@ function PlayListItem() {
           </div>
           <div className="track__title-text">
             <a className="track__title-link" href="http://">
-              Non Stop <span className="track__title-span">(Remix)</span>
+              {props.title}
+              <span className="track__title-span">({props.titleAdd})</span>
             </a>
           </div>
         </div>
         <div className="track__author">
           <a className="track__author-link" href="http://">
-            Стоункат, Psychopath
+            {props.author}
           </a>
         </div>
         <div className="track__album">
           <a className="track__album-link" href="http://">
-            Non Stop
+            {props.album}
           </a>
         </div>
         <div className="track__time">
           <svg className="track__time-svg" alt="time">
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </svg>
-          <span className="track__time-text">4:12</span>
+          <span className="track__time-text">{props.time}</span>
         </div>
       </div>
     </div>
