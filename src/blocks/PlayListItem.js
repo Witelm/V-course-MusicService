@@ -1,3 +1,11 @@
+const track = {
+  title: 'Non Stop',
+  titleAdd: 'Remix',
+  author: 'Стоункат, Psychopath',
+  album: 'Non Stop',
+  time: '4.12',
+}
+
 function PlayListItem() {
   return (
     <div className="playlist__item">
