@@ -1,7 +1,7 @@
 import NavMenu from './NavMenu'
 import { useState } from 'react'
 
-function Nav(props) {
+function Nav() {
   const [visible, setVisible] = useState(false)
   const toggleVisibility = () => setVisible(!visible)
 

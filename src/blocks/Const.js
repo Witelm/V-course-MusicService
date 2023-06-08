@@ -8,4 +8,12 @@ const PlayLists = {
   three: 'img/playlist03.png',
 }
 
-export { USER, PlayLists }
+const track = {
+  title: 'Non Stop',
+  titleAdd: 'Remix',
+  author: 'Стоункат, Psychopath',
+  album: 'Non Stop',
+  time: '4.12',
+}
+
+export { USER, PlayLists, track }

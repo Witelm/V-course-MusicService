@@ -1,20 +1,17 @@
 import UserSideBar from './UserSideBar'
 import { USER } from './Const'
+
 function SideBar(props) {
   return (
     <div className="main__sidebar sidebar">
       <UserSideBar {...USER} />
-      {/* <div className="sidebar__personal">
-        <p className="sidebar__personal-name">Sergey.Ivanov</p>
-        <div className="sidebar__avatar"></div>
-      </div> */}
       <div className="sidebar__block">
         <div className="sidebar__list">
           <div className="sidebar__item">
             <a className="sidebar__link" href="#">
               <img
                 className="sidebar__img"
-                src="img/playlist01.png"
+                src={props.one}
                 alt="day's playlist"
               ></img>
             </a>
@@ -23,7 +20,7 @@ function SideBar(props) {
             <a className="sidebar__link" href="#">
               <img
                 className="sidebar__img"
-                src="img/playlist02.png"
+                src={props.two}
                 alt="day's playlist"
               ></img>
             </a>
@@ -32,7 +29,7 @@ function SideBar(props) {
             <a className="sidebar__link" href="#">
               <img
                 className="sidebar__img"
-                src="img/playlist03.png"
+                src={props.three}
                 alt="day's playlist"
               ></img>
             </a>
