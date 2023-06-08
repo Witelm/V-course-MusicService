@@ -44,20 +44,26 @@ function CenterBlock() {
         <div className="filter__title">Искать по:</div>
 
         <div
-          className="dropdown filter__button button-author _btn-text"
+          className={`dropdown filter__button button-author _btn-text ${
+            visibleAuthor ? 'active' : ''
+          }`}
           onClick={toggleVisibilityAuthor}
         >
           исполнителю {visibleAuthor && <Drop />}
         </div>
 
         <div
-          className="dropdown filter__button button-year _btn-text"
+          className={`dropdown filter__button button-author _btn-text ${
+            visibleYear ? 'active' : ''
+          }`}
           onClick={toggleVisibilityYear}
         >
           году выпуска {visibleYear && <Drop />}
         </div>
         <div
-          className=" dropdown filter__button button-genre _btn-text"
+          className={`dropdown filter__button button-author _btn-text ${
+            visibleZhanr ? 'active' : ''
+          }`}
           onClick={toggleVisibilityZhanr}
         >
           жанру {visibleZhanr && <Drop />}

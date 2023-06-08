@@ -59,7 +59,7 @@ body {
   background-color: #181818;
 }
 
-._btn-text:hover {
+._btn-text:not(.active):hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
