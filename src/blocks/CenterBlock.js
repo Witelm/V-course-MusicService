@@ -4,26 +4,9 @@ import PlayListItem from './PlayListItem'
 import { track } from './Const'
 
 function CenterBlock() {
-  const [visibleAuthor, setVisibleAuthor] = useState(false)
-  const [visibleZhanr, setVisibleZhanr] = useState(false)
-  const [visibleYear, setVisibleYear] = useState(false)
-
-  const toggleVisibilityAuthor = () => {
-    setVisibleAuthor(!visibleAuthor)
-    setVisibleZhanr(false)
-    setVisibleYear(false)
-  }
-
-  const toggleVisibilityZhanr = () => {
-    setVisibleZhanr(!visibleZhanr)
-    setVisibleAuthor(false)
-    setVisibleYear(false)
-  }
-
-  const toggleVisibilityYear = () => {
-    setVisibleYear(!visibleYear)
-    setVisibleAuthor(false)
-    setVisibleZhanr(false)
+  const [visibleFilter, setVisibleFilter] = useState(null)
+  const toggleVisibilityFilter = (filter) => {
+    setVisibleFilter(visibleFilter === filter ? null : filter)
   }
 
   return (
@@ -45,28 +28,28 @@ function CenterBlock() {
 
         <div
           className={`dropdown filter__button button-author _btn-text ${
-            visibleAuthor ? 'active' : ''
+            visibleFilter === 'author' ? 'active' : ''
           }`}
-          onClick={toggleVisibilityAuthor}
+          onClick={() => toggleVisibilityFilter('author')}
         >
-          исполнителю {visibleAuthor && <Drop />}
+          исполнителю {visibleFilter === 'author' && <Drop />}
         </div>
 
         <div
           className={`dropdown filter__button button-author _btn-text ${
-            visibleYear ? 'active' : ''
+            visibleFilter === 'year' ? 'active' : ''
           }`}
-          onClick={toggleVisibilityYear}
+          onClick={() => toggleVisibilityFilter('year')}
         >
-          году выпуска {visibleYear && <Drop />}
+          году выпуска {visibleFilter === 'year' && <Drop />}
         </div>
         <div
           className={`dropdown filter__button button-author _btn-text ${
-            visibleZhanr ? 'active' : ''
+            visibleFilter === 'zhanr' ? 'active' : ''
           }`}
-          onClick={toggleVisibilityZhanr}
+          onClick={() => toggleVisibilityFilter('zhanr')}
         >
-          жанру {visibleZhanr && <Drop />}
+          жанру {visibleFilter === 'zhanr' && <Drop />}
         </div>
       </div>
       <div className="centerblock__content">
