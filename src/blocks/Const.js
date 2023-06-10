@@ -16,4 +16,12 @@ const track = {
   time: '4.12',
 }
 
-export { USER, PlayLists, track }
+const PlayListsSkeleton = {
+  title: '',
+  titleAdd: '',
+  author: '',
+  album: '',
+  time: '',
+}
+
+export { USER, PlayLists, track, PlayListsSkeleton }

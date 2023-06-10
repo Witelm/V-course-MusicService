@@ -928,3 +928,15 @@ body {
   color: #ad61ff;
   cursor: pointer;
 }
+
+.skeleton-sidebar {
+  background: #313131;
+  width: 250px;
+  height: 150px;
+  margin-bottom: 30px;
+}
+
+.skeleton-playlist-item {
+  background: #313131;
+  margin: 6px;
+}
