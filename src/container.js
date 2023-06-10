@@ -14,7 +14,7 @@ function Container() {
   return (
     <div className="container">
       <Main isLoading={isLoading} />
-      <Bar />
+      {isLoading ? null : <Bar />}
       <Footer />
     </div>
   )
