@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 // const listAuthors = [
 //   'Исполнитель 1',
@@ -28,20 +28,28 @@ function Drop() {
   }
 
   return (
-    <ul className="">
-      {listAuthors.map((author, index) => (
-        <li key={index}>
-          <a
-            className="dropdown-item"
-            href="#"
-            id={author.id}
-            onClick={toggleChoice}
-          >
-            {author.name}
-          </a>
-        </li>
-      ))}
-    </ul>
+    <React.Fragment>
+      {choice.length >= 1 ? (
+        <div className="drop-elem">{choice.length}</div>
+      ) : (
+        ''
+      )}
+
+      <ul className="">
+        {listAuthors.map((author, index) => (
+          <li key={index}>
+            <a
+              className="dropdown-item"
+              href="#"
+              id={author.id}
+              onClick={toggleChoice}
+            >
+              {author.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </React.Fragment>
   )
 
   // return (
