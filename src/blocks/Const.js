@@ -24,4 +24,14 @@ const PlayListsSkeleton = {
   time: '',
 }
 
-export { USER, PlayLists, track, PlayListsSkeleton }
+const content = [
+  { name: 'Исполнитель 1', id: 1 },
+  { name: 'Исполнитель 2', id: 2 },
+  { name: 'Исполнитель 3', id: 3 },
+  { name: 'Исполнитель 4', id: 4 },
+  { name: 'Исполнитель 5', id: 5 },
+  { name: 'Исполнитель 6', id: 6 },
+  { name: 'Исполнитель 7', id: 7 },
+]
+
+export { USER, PlayLists, track, PlayListsSkeleton, content }

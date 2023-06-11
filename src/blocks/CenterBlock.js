@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { Drop } from './Drop'
 import PlayListItem from './PlayListItem'
-import { track } from './Const'
+import { track, content } from './Const'
+import ButtonFilter from './ButtonFilter'
 
 function CenterBlock() {
-  const [visibleFilter, setVisibleFilter] = useState(null)
-  const toggleVisibilityFilter = (filter) => {
-    setVisibleFilter(visibleFilter === filter ? null : filter)
+  const [activeButton, setActiveButton] = useState('')
+
+  const toggleFilter = (filter) => {
+    setActiveButton(activeButton === filter ? null : filter)
   }
 
   return (
@@ -23,10 +24,19 @@ function CenterBlock() {
         ></input>
       </div>
       <h2 className="centerblock__h2">Треки</h2>
+
       <div className="centerblock__filter filter">
         <div className="filter__title">Искать по:</div>
 
-        <div
+        <ButtonFilter
+          title="исполнителю"
+          isActive={activeButton === 'author'}
+          onClick={() => toggleFilter('author')}
+          hideButton={() => setActiveButton('')}
+          content={content}
+        />
+
+        {/* <div
           className={`dropdown filter__button button-author _btn-text ${
             visibleFilter === 'author' ? 'active' : ''
           }`}
@@ -50,8 +60,9 @@ function CenterBlock() {
           onClick={() => toggleVisibilityFilter('zhanr')}
         >
           жанру {visibleFilter === 'zhanr' && <Drop />}
-        </div>
+        </div> */}
       </div>
+
       <div className="centerblock__content">
         <div className="content__title playlist-title">
           <div className="playlist-title__col col01">Трек</div>
