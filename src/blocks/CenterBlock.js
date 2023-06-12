@@ -35,7 +35,21 @@ function CenterBlock() {
           hideButton={() => setActiveButton('')}
           content={content}
         />
+        <ButtonFilter
+          title="году"
+          isActive={activeButton === 'year'}
+          onClick={() => toggleFilter('year')}
+          hideButton={() => setActiveButton('')}
+          content={content}
+        />
 
+        <ButtonFilter
+          title="жанру"
+          isActive={activeButton === 'genre'}
+          onClick={() => toggleFilter('genre')}
+          hideButton={() => setActiveButton('')}
+          content={content}
+        />
         {/* <div
           className={`dropdown filter__button button-author _btn-text ${
             visibleFilter === 'author' ? 'active' : ''

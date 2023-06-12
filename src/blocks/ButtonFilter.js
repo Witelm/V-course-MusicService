@@ -9,28 +9,36 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
     if (selected.includes(id)) {
       setSelected(selected.filter((item) => item !== id))
     } else {
-      selected([...selected, id])
+      setSelected([...selected, id])
     }
   }
 
   return (
     <React.Fragment>
-      {selectedFilters >= 1 ? (
-        <div className="dropdown-item">{selectedFilters}</div>
-      ) : null}
+      {/* {selectedFilters >= 1 ? (
+        <div className="drop-elem">{selectedFilters}</div>
+      ) : null} */}
 
       <div
         className={`dropdown filter__button button-author _btn-text ${buttonStyle}`}
         onClick={onClick}
       >
         {title}
+        {selectedFilters >= 1 ? (
+          <div className="drop-elem">{selectedFilters}</div>
+        ) : null}
+        {isActive ? (
+          <div className="">
+            <Drop content={content} onSelect={handleSelected} />
+          </div>
+        ) : null}
       </div>
 
-      {isActive ? (
+      {/* {isActive ? (
         <div className="">
           <Drop content={content} onSelect={handleSelected} />
         </div>
-      ) : null}
+      ) : null} */}
     </React.Fragment>
   )
 }

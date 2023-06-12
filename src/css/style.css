@@ -909,14 +909,14 @@ body {
 
 .drop-elem {
   position: absolute;
-  top: -15px;
-  left: 100px;
+  top: -50%;
+  left: 75%;
   border: 1px solid #ad61ff;
   border-radius: 33px;
   padding: 1px 10px;
   color: white;
-  text-color: red;
   background-color: #ad61ff;
+  z-index: 99;
 }
 
 ::-webkit-scrollbar {
