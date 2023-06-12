@@ -36,7 +36,7 @@ function CenterBlock() {
           content={content}
         />
         <ButtonFilter
-          title="году"
+          title="году выпуска"
           isActive={activeButton === 'year'}
           onClick={() => toggleFilter('year')}
           hideButton={() => setActiveButton('')}
@@ -50,31 +50,6 @@ function CenterBlock() {
           hideButton={() => setActiveButton('')}
           content={content}
         />
-        {/* <div
-          className={`dropdown filter__button button-author _btn-text ${
-            visibleFilter === 'author' ? 'active' : ''
-          }`}
-          onClick={() => toggleVisibilityFilter('author')}
-        >
-          исполнителю {visibleFilter === 'author' && <Drop />}
-        </div>
-
-        <div
-          className={`dropdown filter__button button-author _btn-text ${
-            visibleFilter === 'year' ? 'active' : ''
-          }`}
-          onClick={() => toggleVisibilityFilter('year')}
-        >
-          году выпуска {visibleFilter === 'year' && <Drop />}
-        </div>
-        <div
-          className={`dropdown filter__button button-author _btn-text ${
-            visibleFilter === 'zhanr' ? 'active' : ''
-          }`}
-          onClick={() => toggleVisibilityFilter('zhanr')}
-        >
-          жанру {visibleFilter === 'zhanr' && <Drop />}
-        </div> */}
       </div>
 
       <div className="centerblock__content">

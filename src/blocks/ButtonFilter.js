@@ -15,10 +15,6 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
 
   return (
     <React.Fragment>
-      {/* {selectedFilters >= 1 ? (
-        <div className="drop-elem">{selectedFilters}</div>
-      ) : null} */}
-
       <div
         className={`dropdown filter__button button-author _btn-text ${buttonStyle}`}
         onClick={onClick}
@@ -28,17 +24,11 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
           <div className="drop-elem">{selectedFilters}</div>
         ) : null}
         {isActive ? (
-          <div className="">
+          <div className="" onMouseLeave={() => hideButton()}>
             <Drop content={content} onSelect={handleSelected} />
           </div>
         ) : null}
       </div>
-
-      {/* {isActive ? (
-        <div className="">
-          <Drop content={content} onSelect={handleSelected} />
-        </div>
-      ) : null} */}
     </React.Fragment>
   )
 }
