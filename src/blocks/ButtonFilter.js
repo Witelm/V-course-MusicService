@@ -1,5 +1,23 @@
 import React, { useState } from 'react'
 import Drop from './Drop'
+import styled from 'styled-components'
+
+const StyledDropElement = styled.div`
+  position: absolute;
+  top: -50%;
+  left: 75%;
+  border: 1px solid #ad61ff;
+  border-radius: 33px;
+  padding: 1px 10px;
+  color: white;
+  background-color: #ad61ff;
+  z-index: 99;
+`
+
+const StyledDropdown = styled.div`
+  position: relative;
+  margin-right: 10px;
+`
 
 function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
   const [selected, setSelected] = useState([])
@@ -15,20 +33,20 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
 
   return (
     <React.Fragment>
-      <div
-        className={`dropdown filter__button button-author _btn-text ${buttonStyle}`}
+      <StyledDropdown
+        className={`filter__button button-author _btn-text ${buttonStyle}`}
         onClick={onClick}
       >
         {title}
         {selectedFilters >= 1 ? (
-          <div className="drop-elem">{selectedFilters}</div>
+          <StyledDropElement>{selectedFilters}</StyledDropElement>
         ) : null}
         {isActive ? (
           <div className="" onMouseLeave={() => hideButton()}>
             <Drop content={content} onSelect={handleSelected} />
           </div>
         ) : null}
-      </div>
+      </StyledDropdown>
     </React.Fragment>
   )
 }

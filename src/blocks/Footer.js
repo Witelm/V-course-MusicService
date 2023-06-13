@@ -1,5 +1,9 @@
+import styled from 'styled-components'
+
+const StyledFooter = styled.footer``
+
 function Footer() {
-  return <footer className="footer"></footer>
+  return <StyledFooter />
 }
 
 export default Footer
