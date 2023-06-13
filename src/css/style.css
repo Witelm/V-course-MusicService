@@ -59,7 +59,7 @@ body {
   background-color: #181818;
 }
 
-._btn-text:hover {
+._btn-text:not(.active):hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
@@ -145,6 +145,7 @@ body {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  cursor: pointer;
 }
 
 .nav__menu {
@@ -875,4 +876,80 @@ body {
 
 .volume__progress-line {
   width: 109px;
+}
+
+.dropdown {
+  position: relative;
+  margin-right: 10px;
+}
+
+.dropdown ul {
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: -webkit-fill-available;
+  background: #4e4e4e;
+  border-radius: 5px;
+  padding: 10px;
+  min-width: max-content;
+  height: 130px;
+  overflow: auto;
+}
+
+.dropdown-item {
+  font-family: 'StratosSkyeng';
+  color: #ffffff;
+}
+.dropdown-item:hover {
+  border-color: #d9b6ff;
+  color: #d9b6ff;
+  cursor: pointer;
+}
+
+.drop-elem {
+  position: absolute;
+  top: -50%;
+  left: 75%;
+  border: 1px solid #ad61ff;
+  border-radius: 33px;
+  padding: 1px 10px;
+  color: white;
+  background-color: #ad61ff;
+  z-index: 99;
+}
+
+::-webkit-scrollbar {
+  border: 10px solid transparent;
+  background-color: #ffffff;
+  border-radius: 100px;
+  background-clip: content-box;
+}
+
+::-webkit-slider-thumb {
+  background-color: #4e4e4e;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 100px;
+  border: 8px solid #4e4e4e;
+}
+
+.active {
+  border-color: #ad61ff;
+  color: #ad61ff;
+  cursor: pointer;
+}
+
+.skeleton-sidebar {
+  background: #313131;
+  width: 250px;
+  height: 150px;
+  margin-bottom: 30px;
+}
+
+.skeleton-playlist-item {
+  background: #313131;
+  margin: 6px;
 }
