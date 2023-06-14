@@ -34,6 +34,18 @@ const NavLogo = styled.div`
   margin-bottom: 20px;
 `
 
+const StyledMainNav = styled.nav`
+  width: 244px;
+  background-color: #181818;
+  padding: 20px 0 20px 36px;
+`
+
+const LogoImage = styled.img`
+  width: 113.33px;
+  height: 17px;
+  color: #181818;
+`
+
 const NavLogoImg = () => {}
 
 function Nav() {
@@ -41,9 +53,9 @@ function Nav() {
   const toggleVisibility = () => setVisible(!visible)
 
   return (
-    <nav className="main__nav nav">
+    <StyledMainNav>
       <NavLogo>
-        <img className="logo__image" src="img/logo.png" alt="logo"></img>
+        <LogoImage src="img/logo.png" alt="logo" />
       </NavLogo>
       <NavBurger onClick={toggleVisibility}>
         <BurgerLine />
@@ -51,7 +63,7 @@ function Nav() {
         <BurgerLine />
       </NavBurger>
       {visible && <NavMenu />}
-    </nav>
+    </StyledMainNav>
   )
 }
 

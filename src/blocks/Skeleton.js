@@ -1,10 +1,12 @@
 import { PlayListsSkeleton } from './Const'
 import SkeletonItem from './SkeletonItem'
+import Nav from './menu/Nav'
 
 function Skeleton() {
   return (
     <main className="main">
-      <nav className="main__nav nav">
+      <Nav />
+      {/* <nav className="main__nav nav">
         <div className="nav__logo logo">
           <img className="logo__image" src="img/logo.png" alt="logo"></img>
         </div>
@@ -13,7 +15,7 @@ function Skeleton() {
           <span className="burger__line"></span>
           <span className="burger__line"></span>
         </div>
-      </nav>
+      </nav> */}
       <div className="main__centerblock centerblock">
         <div className="centerblock__search search">
           <svg className="search__svg">

@@ -5,11 +5,16 @@ const MenuList = styled.div`
   padding: 18px 0 10px 0;
 `
 
+const StyledNavMenu = styled.div`
+  display: block;
+  visibility: visible;
+`
+
 function NavMenu() {
   return (
-    <div className="nav__menu menu">
+    <StyledNavMenu>
       <MenuList>{FunctionItem}</MenuList>
-    </div>
+    </StyledNavMenu>
   )
 }
 
