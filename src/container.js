@@ -20,6 +20,14 @@ function Container() {
     }, 5000)
   }, [])
 
+  // function Container() {
+  //   const [isLoading, setLoading] = useState(true)
+  //   useEffect(() => {
+  //     setTimeout(() => {
+  //       setLoading(false)
+  //     }, 5000)
+  //   }, [])
+
   return (
     <StyledContainer>
       <Main isLoading={isLoading} />

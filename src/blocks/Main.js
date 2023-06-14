@@ -1,7 +1,7 @@
 import React from 'react'
 import Skeleton from './skeleton/Skeleton'
 
-import SideBar from './sudebar/SideBar'
+import SideBar from './sidebar/SideBar'
 import Nav from './menu/Nav'
 import CenterBlock from './center/CenterBlock'
 import { PlayLists } from './Const'

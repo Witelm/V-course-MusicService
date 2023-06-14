@@ -1,38 +1,36 @@
+import * as S from './StylePlayList'
+
 function PlayListItem(props) {
   return (
-    <div className="playlist__item">
-      <div className="playlist__track track">
-        <div className="track__title">
-          <div className="track__title-image">
-            <svg className="track__title-svg" alt="music">
+    <S.PlaylistItem>
+      <S.PlaylistTrack>
+        <S.TrackTitle>
+          <S.TrackTitleImage>
+            <S.TrackTitleSvg alt="music">
               <use xlinkHref="img/icon/sprite.svg#icon-note"></use>
-            </svg>
-          </div>
+            </S.TrackTitleSvg>
+          </S.TrackTitleImage>
           <div className="track__title-text">
-            <a className="track__title-link" href="http://">
+            <S.TrackTitleLink href="http://">
               {props.title}
-              <span className="track__title-span">({props.titleAdd})</span>
-            </a>
+              <S.TrackTitleSpan>({props.titleAdd})</S.TrackTitleSpan>
+            </S.TrackTitleLink>
           </div>
-        </div>
-        <div className="track__author">
-          <a className="track__author-link" href="http://">
-            {props.author}
-          </a>
-        </div>
-        <div className="track__album">
-          <a className="track__album-link" href="http://">
-            {props.album}
-          </a>
-        </div>
+        </S.TrackTitle>
+        <S.TrackAuthor>
+          <S.TrackAuthorLink href="http://">{props.author}</S.TrackAuthorLink>
+        </S.TrackAuthor>
+        <S.TrackAlbum>
+          <S.TrackAlbumLink href="http://">{props.album}</S.TrackAlbumLink>
+        </S.TrackAlbum>
         <div className="track__time">
-          <svg className="track__time-svg" alt="time">
+          <S.TrackTimeSvg alt="time">
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
-          </svg>
-          <span className="track__time-text">{props.time}</span>
+          </S.TrackTimeSvg>
+          <S.TrackTimeText>{props.time}</S.TrackTimeText>
         </div>
-      </div>
-    </div>
+      </S.PlaylistTrack>
+    </S.PlaylistItem>
   )
 }
 

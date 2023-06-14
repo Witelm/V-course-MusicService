@@ -51,13 +51,13 @@ body {
   background-color: #383838;
 }
 
-.container {
+/* .container {
   max-width: 1920px;
   height: 100vh;
   margin: 0 auto;
   position: relative;
   background-color: #181818;
-}
+} */
 
 ._btn-text:not(.active):hover {
   border-color: #d9b6ff;
@@ -110,13 +110,13 @@ body {
   padding: 20px 0 20px 36px;
 } */
 
-.main__centerblock {
+/* .main__centerblock {
   width: auto;
   -webkit-box-flex: 3;
   -ms-flex-positive: 3;
   flex-grow: 3;
   padding: 20px 40px 20px 111px;
-}
+} */
 
 .main__sidebar {
   max-width: 418px;
@@ -153,11 +153,11 @@ body {
   visibility: visible;
 } */
 
-.logo__image {
+/* .logo__image {
   width: 113.33px;
   height: 17px;
   color: #181818;
-}
+} */
 
 /* .burger__line {
   display: inline-block;
@@ -182,7 +182,7 @@ body {
   line-height: 24px;
 } */
 
-.centerblock__search {
+/* .centerblock__search {
   width: 100%;
   border-bottom: 1px solid #4e4e4e;
   margin-bottom: 51px;
@@ -229,7 +229,7 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-}
+} */
 
 .search__svg {
   width: 17px;
@@ -328,7 +328,7 @@ body {
   margin-bottom: 24px;
 }
 
-.content__playlist {
+/* .content__playlist {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -371,9 +371,9 @@ body {
 .col04 {
   width: 60px;
   text-align: end;
-}
+} */
 
-.playlist__item {
+/* .playlist__item {
   width: 100%;
   display: block;
   margin-bottom: 12px;
@@ -431,9 +431,9 @@ body {
   height: 17px;
   fill: transparent;
   stroke: #4e4e4e;
-}
+} */
 
-.track__title-link {
+/* .track__title-link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -466,9 +466,9 @@ body {
   line-height: 24px;
   color: #ffffff;
   text-align: left;
-}
+} */
 
-.track__album {
+/* .track__album {
   width: 245px;
 }
 
@@ -495,7 +495,7 @@ body {
   line-height: 24px;
   text-align: right;
   color: #696969;
-}
+} */
 
 /* .sidebar__personal {
   display: -webkit-box;

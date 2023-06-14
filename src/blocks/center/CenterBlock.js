@@ -3,6 +3,10 @@ import PlayListItem from './PlayListItem'
 import { track, content } from '../Const'
 import ButtonFilter from '../filter/ButtonFilter'
 
+import * as S from './StyleCenterBlock'
+
+import CenterContent from './CenterContent'
+
 function CenterBlock() {
   const [activeButton, setActiveButton] = useState('')
 
@@ -11,8 +15,8 @@ function CenterBlock() {
   }
 
   return (
-    <div className="main__centerblock centerblock">
-      <div className="centerblock__search search">
+    <S.MainCenterblock>
+      <S.CenterblockSearch>
         <svg className="search__svg">
           <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
         </svg>
@@ -22,10 +26,10 @@ function CenterBlock() {
           placeholder="Поиск"
           name="search"
         ></input>
-      </div>
-      <h2 className="centerblock__h2">Треки</h2>
+      </S.CenterblockSearch>
+      <S.CenterblockH2>Треки</S.CenterblockH2>
 
-      <div className="centerblock__filter filter">
+      <S.CenterblockFilter>
         <div className="filter__title">Искать по:</div>
 
         <ButtonFilter
@@ -50,26 +54,17 @@ function CenterBlock() {
           hideButton={() => setActiveButton('')}
           content={content}
         />
-      </div>
+      </S.CenterblockFilter>
 
-      <div className="centerblock__content">
-        <div className="content__title playlist-title">
-          <div className="playlist-title__col col01">Трек</div>
-          <div className="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-          <div className="playlist-title__col col03">АЛЬБОМ</div>
-          <div className="playlist-title__col col04">
-            <svg className="playlist-title__svg" alt="time">
-              <use xlinkHref="img/icon/sprite.svg#icon-watch"></use>
-            </svg>
-          </div>
-        </div>
+      <S.CenterblockContent>
+        <CenterContent />
         <div className="content__playlist playlist">
           {Array.from({ length: 11 }).map((item, index) => (
             <PlayListItem {...track} key={index} />
           ))}
         </div>
-      </div>
-    </div>
+      </S.CenterblockContent>
+    </S.MainCenterblock>
   )
 }
 
