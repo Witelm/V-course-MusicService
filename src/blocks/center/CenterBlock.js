@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import PlayListItem from './PlayListItem'
-import { track, content } from './Const'
-import ButtonFilter from './ButtonFilter'
+import { track, content } from '../Const'
+import ButtonFilter from '../filter/ButtonFilter'
 
 function CenterBlock() {
   const [activeButton, setActiveButton] = useState('')

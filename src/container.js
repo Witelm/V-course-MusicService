@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Main from './blocks/Main'
-import Bar from './blocks/Bar'
-import Footer from './blocks/Footer'
+import Bar from './blocks/bar/Bar'
+import Footer from './blocks/footer/Footer'
 import styled from 'styled-components'
 
 const StyledContainer = styled.div`

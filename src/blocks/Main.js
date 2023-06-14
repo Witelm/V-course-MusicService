@@ -1,9 +1,9 @@
 import React from 'react'
-import Skeleton from './Skeleton'
+import Skeleton from './skeleton/Skeleton'
 
-import SideBar from './SideBar'
+import SideBar from './sudebar/SideBar'
 import Nav from './menu/Nav'
-import CenterBlock from './CenterBlock'
+import CenterBlock from './center/CenterBlock'
 import { PlayLists } from './Const'
 
 import styled from 'styled-components'

@@ -1,5 +1,5 @@
 import UserSideBar from './UserSideBar'
-import { USER } from './Const'
+import { USER } from '../Const'
 
 function SideBar(props) {
   return (
