@@ -17,6 +17,27 @@ const StyledDropElement = styled.div`
 const StyledDropdown = styled.div`
   position: relative;
   margin-right: 10px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ffffff;
+  border-radius: 60px;
+  padding: 6px 20px;
+  &:not(.active):hover {
+    border-color: #d9b6ff;
+    color: #d9b6ff;
+    cursor: pointer;
+  }
+  &:active {
+    border-color: #ad61ff;
+    color: #ad61ff;
+    cursor: pointer;
+  }
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
 `
 
 function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
@@ -33,10 +54,7 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
 
   return (
     <React.Fragment>
-      <StyledDropdown
-        className={`filter__button button-author _btn-text ${buttonStyle}`}
-        onClick={onClick}
-      >
+      <StyledDropdown className={` ${buttonStyle}`} onClick={onClick}>
         {title}
         {selectedFilters >= 1 ? (
           <StyledDropElement>{selectedFilters}</StyledDropElement>

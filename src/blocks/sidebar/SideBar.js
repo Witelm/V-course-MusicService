@@ -1,42 +1,31 @@
 import UserSideBar from './UserSideBar'
 import { USER } from '../Const'
+import * as S from './StyleSideBar'
 
 function SideBar(props) {
   return (
-    <div className="main__sidebar sidebar">
+    <S.MainSidebar>
       <UserSideBar {...USER} />
-      <div className="sidebar__block">
-        <div className="sidebar__list">
-          <div className="sidebar__item">
-            <a className="sidebar__link" href="#">
-              <img
-                className="sidebar__img"
-                src={props.one}
-                alt="day's playlist"
-              ></img>
-            </a>
-          </div>
-          <div className="sidebar__item">
-            <a className="sidebar__link" href="#">
-              <img
-                className="sidebar__img"
-                src={props.two}
-                alt="day's playlist"
-              ></img>
-            </a>
-          </div>
-          <div className="sidebar__item">
-            <a className="sidebar__link" href="#">
-              <img
-                className="sidebar__img"
-                src={props.three}
-                alt="day's playlist"
-              ></img>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
+      <S.SidebarBlock>
+        <S.SidebarList>
+          <S.SideBarItem>
+            <S.SidebarLink href="#">
+              <S.SidebarImg src={props.one} alt="day's playlist" />
+            </S.SidebarLink>
+          </S.SideBarItem>
+          <S.SideBarItem>
+            <S.SidebarLink href="#">
+              <S.SidebarImg src={props.two} alt="day's playlist" />
+            </S.SidebarLink>
+          </S.SideBarItem>
+          <S.SideBarItem>
+            <S.SidebarLink href="#">
+              <S.SidebarImg src={props.three} alt="day's playlist" />
+            </S.SidebarLink>
+          </S.SideBarItem>
+        </S.SidebarList>
+      </S.SidebarBlock>
+    </S.MainSidebar>
   )
 }
 
