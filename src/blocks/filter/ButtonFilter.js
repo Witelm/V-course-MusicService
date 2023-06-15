@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Drop from './Drop'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledDropElement = styled.div`
   position: absolute;
@@ -42,7 +42,13 @@ const StyledDropdown = styled.div`
     margin-right: 10px;
   }
 
-  color: ${(props) => props.active};
+  ${(props) =>
+    props.$active &&
+    css`
+      border-color: #ad61ff;
+      color: #ad61ff;
+      cursor: pointer;
+    `};
 `
 
 function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
@@ -59,7 +65,7 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
 
   return (
     <React.Fragment>
-      <StyledDropdown className={` ${buttonStyle}`} onClick={onClick}>
+      <StyledDropdown $active={buttonStyle} onClick={onClick}>
         {title}
         {selectedFilters >= 1 ? (
           <StyledDropElement>{selectedFilters}</StyledDropElement>
@@ -70,6 +76,18 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
           </div>
         ) : null}
       </StyledDropdown>
+
+      {/* <StyledDropdown className={` ${buttonStyle}`} onClick={onClick}>
+        {title}
+        {selectedFilters >= 1 ? (
+          <StyledDropElement>{selectedFilters}</StyledDropElement>
+        ) : null}
+        {isActive ? (
+          <div className="" onMouseLeave={() => hideButton()}>
+            <Drop content={content} onSelect={handleSelected} />
+          </div>
+        ) : null}
+      </StyledDropdown> */}
     </React.Fragment>
   )
 }
