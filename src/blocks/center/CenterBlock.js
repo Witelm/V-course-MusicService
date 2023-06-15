@@ -17,20 +17,19 @@ function CenterBlock() {
   return (
     <S.MainCenterblock>
       <S.CenterblockSearch>
-        <svg className="search__svg">
+        <S.SearchSvg>
           <use xlinkHref="img/icon/sprite.svg#icon-search"></use>
-        </svg>
-        <input
-          className="search__text"
+        </S.SearchSvg>
+        <S.SerchText
           type="search"
           placeholder="Поиск"
           name="search"
-        ></input>
+        ></S.SerchText>
       </S.CenterblockSearch>
       <S.CenterblockH2>Треки</S.CenterblockH2>
 
       <S.CenterblockFilter>
-        <div className="filter__title">Искать по:</div>
+        <S.FilterTitle>Искать по:</S.FilterTitle>
 
         <ButtonFilter
           title="исполнителю"
@@ -58,11 +57,11 @@ function CenterBlock() {
 
       <S.CenterblockContent>
         <CenterContent />
-        <div className="content__playlist playlist">
+        <S.ContentPlaylist>
           {Array.from({ length: 11 }).map((item, index) => (
             <PlayListItem {...track} key={index} />
           ))}
-        </div>
+        </S.ContentPlaylist>
       </S.CenterblockContent>
     </S.MainCenterblock>
   )

@@ -25,19 +25,24 @@ const StyledDropdown = styled.div`
   border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
+
   &:not(.active):hover {
     border-color: #d9b6ff;
     color: #d9b6ff;
     cursor: pointer;
   }
+
   &:active {
     border-color: #ad61ff;
     color: #ad61ff;
     cursor: pointer;
   }
+
   &:not(:last-child) {
     margin-right: 10px;
   }
+
+  color: ${(props) => props.active};
 `
 
 function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
