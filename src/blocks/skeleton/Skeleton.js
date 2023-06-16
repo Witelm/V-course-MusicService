@@ -6,16 +6,7 @@ function Skeleton() {
   return (
     <main className="main">
       <Nav />
-      {/* <nav className="main__nav nav">
-        <div className="nav__logo logo">
-          <img className="logo__image" src="img/logo.png" alt="logo"></img>
-        </div>
-        <div className="nav__burger burger">
-          <span className="burger__line"></span>
-          <span className="burger__line"></span>
-          <span className="burger__line"></span>
-        </div>
-      </nav> */}
+
       <div className="main__centerblock centerblock">
         <div className="centerblock__search search">
           <svg className="search__svg">
@@ -61,6 +52,7 @@ function Skeleton() {
           </div>
         </div>
       </div>
+
       <div className="main__sidebar sidebar">
         <div className="sidebar__personal">
           <p className="sidebar__personal-name"></p>

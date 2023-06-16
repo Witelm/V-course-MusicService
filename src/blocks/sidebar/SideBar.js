@@ -1,12 +1,15 @@
 import UserSideBar from './UserSideBar'
-import { USER } from '../Const'
+import { PlayLists, USER } from '../Const'
 import * as S from './StyleSideBar'
+import SideBarList from './SideBarList'
 
 function SideBar(props) {
   return (
     <S.MainSidebar>
       <UserSideBar {...USER} />
       <S.SidebarBlock>
+        {/* <SideBarList /> */}
+
         <S.SidebarList>
           <S.SideBarItem>
             <S.SidebarLink href="#">

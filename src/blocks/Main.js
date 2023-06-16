@@ -4,9 +4,11 @@ import Skeleton from './skeleton/Skeleton'
 import SideBar from './sidebar/SideBar'
 import Nav from './menu/Nav'
 import CenterBlock from './center/CenterBlock'
-import { PlayLists } from './Const'
+import { PlayLists, PlayListsSkeleton, track } from './Const'
 
 import styled from 'styled-components'
+import PlayListItem from './center/PlayListItem'
+import SkeletonItem from './skeleton/SkeletonItem'
 
 const StyledMain = styled.main`
   -webkit-box-flex: 1;
@@ -25,12 +27,14 @@ const StyledMain = styled.main`
 function Main(props) {
   return props.isLoading ? (
     <StyledMain>
-      <Skeleton />
+      <Nav />
+      <CenterBlock array={SkeletonItem} track={PlayListsSkeleton} />
+      <SideBar {...PlayLists} />
     </StyledMain>
   ) : (
     <StyledMain>
       <Nav />
-      <CenterBlock />
+      <CenterBlock array={PlayListItem} track={track} />
       <SideBar {...PlayLists} />
     </StyledMain>
   )
