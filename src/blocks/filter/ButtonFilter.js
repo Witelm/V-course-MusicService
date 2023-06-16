@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Drop from './Drop'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const StyledDropElement = styled.div`
   position: absolute;
@@ -22,39 +22,30 @@ const StyledDropdown = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
 
-  &:not(.active):hover {
-    border-color: #d9b6ff;
-    color: #d9b6ff;
-    cursor: pointer;
-  }
+  border: 1px solid ${(props) => (props.isActive ? '#ad61ff' : '#ffffff')};
+  color: ${(props) => (props.isActive ? '#ad61ff' : 'ffffff')};
+  cursor: pointer;
 
-  &:active {
-    border-color: #ad61ff;
-    color: #ad61ff;
+  &:hover {
+    border-color: ${(props) => (props.isActive ? '#ad61ff' : '#d9b6ff')};
+    color: ${(props) => (props.isActive ? '#ad61ff' : '#d9b6ff')};
     cursor: pointer;
   }
 
   &:not(:last-child) {
     margin-right: 10px;
   }
-
-  ${(props) =>
-    props.$active &&
-    css`
-      border-color: #ad61ff;
-      color: #ad61ff;
-      cursor: pointer;
-    `};
 `
 
 function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
   const [selected, setSelected] = useState([])
   const selectedFilters = selected.length
-  const buttonStyle = isActive ? 'active' : ''
+
+  const buttonStyle = isActive ? true : false
+
   const handleSelected = (id) => {
     if (selected.includes(id)) {
       setSelected(selected.filter((item) => item !== id))
@@ -65,7 +56,7 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
 
   return (
     <React.Fragment>
-      <StyledDropdown $active={buttonStyle} onClick={onClick}>
+      <StyledDropdown isActive={buttonStyle} onClick={onClick}>
         {title}
         {selectedFilters >= 1 ? (
           <StyledDropElement>{selectedFilters}</StyledDropElement>
@@ -76,18 +67,6 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
           </div>
         ) : null}
       </StyledDropdown>
-
-      {/* <StyledDropdown className={` ${buttonStyle}`} onClick={onClick}>
-        {title}
-        {selectedFilters >= 1 ? (
-          <StyledDropElement>{selectedFilters}</StyledDropElement>
-        ) : null}
-        {isActive ? (
-          <div className="" onMouseLeave={() => hideButton()}>
-            <Drop content={content} onSelect={handleSelected} />
-          </div>
-        ) : null}
-      </StyledDropdown> */}
     </React.Fragment>
   )
 }

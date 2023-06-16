@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './css/style.css'
+
+// import './css/style.css'
 
 import reportWebVitals from './reportWebVitals'
 import Container from './container'
 
-import styled, { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 const root = ReactDOM.createRoot(document.querySelector('.wrapper'))
 
@@ -42,8 +43,8 @@ ul li {
 @font-face {
   font-family: 'StratosSkyeng';
   src: local('StratosSkyeng'), local('StratosSkyeng'),
-    url('./fonts/Stratos-Regular.woff2') format('woff2'),
-    url('./fonts/Stratos-Regular.woff') format('woff');
+    url('./css/fonts/Stratos-Regular.woff2') format('woff2'),
+    url('./css/fonts/Stratos-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
 }

@@ -61,10 +61,6 @@ function CenterBlock(props) {
           {Array.from({ length: 11 }).map((item, index) => (
             <props.array {...props.track} key={index} />
           ))}
-
-          {/* {Array.from({ length: 11 }).map((item, index) => (
-            <PlayListItem {...track} key={index} />
-          ))} */}
         </S.ContentPlaylist>
       </S.CenterblockContent>
     </S.MainCenterblock>

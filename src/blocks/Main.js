@@ -29,7 +29,6 @@ function Main(props) {
     <StyledMain>
       <Nav />
       <CenterBlock array={SkeletonItem} track={PlayListsSkeleton} />
-      {/* <SideBar {...PlayLists} /> */}
       <SkeletonSidebar />
     </StyledMain>
   ) : (
