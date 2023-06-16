@@ -1,5 +1,4 @@
 import React from 'react'
-import Skeleton from './skeleton/Skeleton'
 
 import SideBar from './sidebar/SideBar'
 import Nav from './menu/Nav'
@@ -9,6 +8,7 @@ import { PlayLists, PlayListsSkeleton, track } from './Const'
 import styled from 'styled-components'
 import PlayListItem from './center/PlayListItem'
 import SkeletonItem from './skeleton/SkeletonItem'
+import SkeletonSidebar from './skeleton/SkeletonSidebar'
 
 const StyledMain = styled.main`
   -webkit-box-flex: 1;
@@ -29,7 +29,8 @@ function Main(props) {
     <StyledMain>
       <Nav />
       <CenterBlock array={SkeletonItem} track={PlayListsSkeleton} />
-      <SideBar {...PlayLists} />
+      {/* <SideBar {...PlayLists} /> */}
+      <SkeletonSidebar />
     </StyledMain>
   ) : (
     <StyledMain>
