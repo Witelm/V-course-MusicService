@@ -104,12 +104,22 @@
 .play_dislike {
   margin-left: 28.5px;
 }
+.like_svg:active {
+  fill: #696969;
+  stroke: #ffffff;
+  cursor: pointer;
+}
 
 .dislike_svg {
   width: 14.34px;
   height: 13px;
   fill: transparent;
   stroke: #696969;
+}
+.dislike_svg:active {
+  fill: #696969;
+  stroke: #ffffff;
+  cursor: pointer;
 }
 
 .btn_icon:hover svg {

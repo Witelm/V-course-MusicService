@@ -1,0 +1,10 @@
+.item {
+  font-family: 'StratosSkyeng';
+  color: #ffffff;
+}
+
+.item:hover {
+  border-color: #d9b6ff;
+  color: #d9b6ff;
+  cursor: pointer;
+}
