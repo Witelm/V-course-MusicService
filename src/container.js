@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Main from './blocks/Main'
-import Bar from './blocks/Bar'
-import Footer from './blocks/Footer'
+import Bar from './blocks/bar/Bar'
+import Footer from './blocks/footer/Footer'
+import styled from 'styled-components'
+
+const StyledContainer = styled.div`
+  max-width: 1920px;
+  height: 100vh;
+  margin: 0 auto;
+  position: relative;
+  background-color: #181818;
+`
 
 function Container() {
   const [isLoading, setLoading] = useState(true)
@@ -12,11 +21,11 @@ function Container() {
   }, [])
 
   return (
-    <div className="container">
+    <StyledContainer>
       <Main isLoading={isLoading} />
       {isLoading ? null : <Bar />}
       <Footer />
-    </div>
+    </StyledContainer>
   )
 }
 

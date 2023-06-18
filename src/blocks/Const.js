@@ -2,6 +2,12 @@ const USER = {
   user: 'Sergey.Ivanov',
 }
 
+const MENU = [
+  { link: 'http://', text: 'Главное' },
+  { link: 'http://', text: 'Мой плейлист' },
+  { link: 'http://', text: 'Войти' },
+]
+
 const PlayLists = {
   one: 'img/playlist01.png',
   two: 'img/playlist02.png',
@@ -34,4 +40,4 @@ const content = [
   { name: 'Исполнитель 7', id: 7 },
 ]
 
-export { USER, PlayLists, track, PlayListsSkeleton, content }
+export { USER, PlayLists, track, PlayListsSkeleton, content, MENU }

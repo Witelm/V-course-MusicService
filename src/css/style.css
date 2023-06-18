@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
@@ -49,21 +49,21 @@ body {
   min-height: 100%;
   overflow: hidden;
   background-color: #383838;
-}
+} */
 
-.container {
+/* .container {
   max-width: 1920px;
   height: 100vh;
   margin: 0 auto;
   position: relative;
   background-color: #181818;
-}
+} */
 
-._btn-text:not(.active):hover {
+/* ._btn-text:not(.active):hover {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
-}
+} */
 
 ._btn-icon:hover svg {
   fill: transparent;
@@ -71,11 +71,11 @@ body {
   cursor: pointer;
 }
 
-._btn-text:active {
+/* ._btn-text:active {
   border-color: #ad61ff;
   color: #ad61ff;
   cursor: pointer;
-}
+} */
 
 ._btn-icon:active svg {
   fill: transparent;
@@ -90,7 +90,7 @@ body {
   cursor: pointer;
 }
 
-.main {
+/* .main {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -102,36 +102,36 @@ body {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-}
+} */
 
-.main__nav {
+/* .main__nav {
   width: 244px;
   background-color: #181818;
   padding: 20px 0 20px 36px;
-}
+} */
 
-.main__centerblock {
+/* .main__centerblock {
   width: auto;
   -webkit-box-flex: 3;
   -ms-flex-positive: 3;
   flex-grow: 3;
   padding: 20px 40px 20px 111px;
-}
+} */
 
-.main__sidebar {
+/* .main__sidebar {
   max-width: 418px;
   padding: 20px 90px 20px 78px;
-}
+} */
 
-.nav__logo {
+/* .nav__logo {
   width: 113.33px;
   height: 43px;
   padding: 13px 0 13px 0;
   background-color: transparent;
   margin-bottom: 20px;
-}
+} */
 
-.nav__burger {
+/* .nav__burger {
   width: 20px;
   height: 36px;
   padding: 13px 0;
@@ -146,31 +146,31 @@ body {
   -ms-flex-pack: justify;
   justify-content: space-between;
   cursor: pointer;
-}
+} */
 
-.nav__menu {
+/* .nav__menu {
   display: block;
   visibility: visible;
-}
+} */
 
-.logo__image {
+/* .logo__image {
   width: 113.33px;
   height: 17px;
   color: #181818;
-}
+} */
 
-.burger__line {
+/* .burger__line {
   display: inline-block;
   width: 100%;
   height: 1px;
   background-color: #d3d3d3;
-}
+} */
 
-.menu__list {
+/* .menu__list {
   padding: 18px 0 10px 0;
-}
+} */
 
-.menu__item {
+/* .menu__item {
   padding: 5px 0;
   margin-bottom: 16px;
 }
@@ -180,9 +180,9 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-}
+} */
 
-.centerblock__search {
+/* .centerblock__search {
   width: 100%;
   border-bottom: 1px solid #4e4e4e;
   margin-bottom: 51px;
@@ -229,17 +229,17 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-}
+} */
 
-.search__svg {
+/* .search__svg {
   width: 17px;
   height: 17px;
   margin-right: 5px;
   stroke: #ffffff;
   fill: transparent;
-}
+} */
 
-.search__text {
+/* .search__text {
   -webkit-box-flex: 100;
   -ms-flex-positive: 100;
   flex-grow: 100;
@@ -287,17 +287,17 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-}
-
+} */
+/* 
 .filter__title {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   margin-right: 15px;
-}
+} */
 
-.filter__button {
+/* .filter__button {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -309,9 +309,9 @@ body {
 
 .filter__button:not(:last-child) {
   margin-right: 10px;
-}
+} */
 
-.content__title {
+/* .content__title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -326,9 +326,9 @@ body {
   -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 24px;
-}
+} */
 
-.content__playlist {
+/* .content__playlist {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -371,9 +371,9 @@ body {
 .col04 {
   width: 60px;
   text-align: end;
-}
+} */
 
-.playlist__item {
+/* .playlist__item {
   width: 100%;
   display: block;
   margin-bottom: 12px;
@@ -431,9 +431,9 @@ body {
   height: 17px;
   fill: transparent;
   stroke: #4e4e4e;
-}
+} */
 
-.track__title-link {
+/* .track__title-link {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -466,9 +466,9 @@ body {
   line-height: 24px;
   color: #ffffff;
   text-align: left;
-}
+} */
 
-.track__album {
+/* .track__album {
   width: 245px;
 }
 
@@ -495,9 +495,9 @@ body {
   line-height: 24px;
   text-align: right;
   color: #696969;
-}
+} */
 
-.sidebar__personal {
+/* .sidebar__personal {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -512,25 +512,25 @@ body {
   -ms-flex-pack: end;
   justify-content: flex-end;
   padding: 12px 0 15px 0;
-}
+} */
 
-.sidebar__personal-name {
+/* .sidebar__personal-name {
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
   margin-right: 16px;
-}
+} */
 
-.sidebar__avatar {
+/* .sidebar__avatar {
   width: 43px;
   height: 43px;
   background-color: #313131;
   border-radius: 50%;
-}
+} */
 
-.sidebar__block {
+/* .sidebar__block {
   height: 100%;
   padding: 240px 0 0 0;
   display: -webkit-box;
@@ -575,9 +575,9 @@ body {
 .sidebar__img {
   width: 100%;
   height: auto;
-}
+} */
 
-.bar {
+/* .bar {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -876,14 +876,14 @@ body {
 
 .volume__progress-line {
   width: 109px;
-}
+} */
 
-.dropdown {
+/* .dropdown {
   position: relative;
   margin-right: 10px;
-}
+} */
 
-.dropdown ul {
+/* .dropdown__ul {
   display: block;
   position: absolute;
   left: 0;
@@ -895,9 +895,9 @@ body {
   min-width: max-content;
   height: 130px;
   overflow: auto;
-}
+} */
 
-.dropdown-item {
+/* .dropdown-item {
   font-family: 'StratosSkyeng';
   color: #ffffff;
 }
@@ -905,9 +905,9 @@ body {
   border-color: #d9b6ff;
   color: #d9b6ff;
   cursor: pointer;
-}
+} */
 
-.drop-elem {
+/* .drop-elem {
   position: absolute;
   top: -50%;
   left: 75%;
@@ -917,9 +917,9 @@ body {
   color: white;
   background-color: #ad61ff;
   z-index: 99;
-}
+} */
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   border: 10px solid transparent;
   background-color: #ffffff;
   border-radius: 100px;
@@ -934,15 +934,15 @@ body {
   background-color: #fff;
   border-radius: 100px;
   border: 8px solid #4e4e4e;
-}
+} */
 
-.active {
+/* .active {
   border-color: #ad61ff;
   color: #ad61ff;
   cursor: pointer;
-}
+} */
 
-.skeleton-sidebar {
+/* .skeleton-sidebar {
   background: #313131;
   width: 250px;
   height: 150px;
@@ -952,4 +952,4 @@ body {
 .skeleton-playlist-item {
   background: #313131;
   margin: 6px;
-}
+} */
