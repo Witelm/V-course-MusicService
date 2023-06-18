@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Main from './blocks/Main'
-import Bar from './blocks/Bar'
+import Bar from './blocks/Bar/Bar'
 import Footer from './blocks/Footer'
 
 function Container() {

@@ -1,19 +1,21 @@
+import s from './NavMenu.module.css'
+
 function NavMenu() {
   return (
-    <div className="nav__menu menu">
-      <ul className="menu__list">
-        <li className="menu__item">
-          <a href="http://" className="menu__link">
+    <div className={s.menu}>
+      <ul className={s.list}>
+        <li className={s.item}>
+          <a href="http://" className={s.link}>
             Главное
           </a>
         </li>
         <li className="menu__item">
-          <a href="http://" className="menu__link">
+          <a href="http://" className={s.link}>
             Мой плейлист
           </a>
         </li>
         <li className="menu__item">
-          <a href="http://" className="menu__link">
+          <a href="http://" className={s.link}>
             Войти
           </a>
         </li>
