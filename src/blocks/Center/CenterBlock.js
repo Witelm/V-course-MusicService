@@ -5,7 +5,7 @@ import { Search } from './Components/Search'
 import { Content } from './Components/Content'
 import s from './CenterBlock.module.css'
 
-function CenterBlock() {
+function CenterBlock(props) {
   const [activeButton, setActiveButton] = useState('')
 
   const toggleFilter = (filter) => {
@@ -42,7 +42,7 @@ function CenterBlock() {
           content={content}
         />
       </div>
-      <Content />
+      <Content {...props} />
     </div>
   )
 }

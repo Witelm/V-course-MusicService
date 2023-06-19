@@ -2,7 +2,7 @@ import PlayListItem from '../../Playlist/PlayListItem'
 import { track } from '../../Const'
 import s from './Content.module.css'
 
-export const Content = () => {
+export const Content = (props) => {
   return (
     <div className={s.content}>
       <div className={s.title}>
@@ -17,7 +17,7 @@ export const Content = () => {
       </div>
       <div className={s.playlist}>
         {Array.from({ length: 11 }).map((item, index) => (
-          <PlayListItem {...track} key={index} />
+          <props.array {...props.track} key={index} />
         ))}
       </div>
     </div>

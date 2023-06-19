@@ -1,20 +1,24 @@
 import React from 'react'
-import Skeleton from './Skeleton/Skeleton'
 
 import SideBar from './Sidebar/SideBar'
 import Nav from './Nav/Nav'
 import CenterBlock from './Center/CenterBlock'
-import { PlayLists } from './Const'
+import { PlayLists, PlayListsSkeleton, track } from './Const'
+import PlayListItem from './Playlist/PlayListItem'
+import SkeletonItem from './Skeleton/SkeletonItem'
+import { SkeletonSidebar } from './Skeleton/SkeletonSidebar'
 
 function Main(props) {
   return props.isLoading ? (
     <main className="main">
-      <Skeleton />
+      <Nav />
+      <CenterBlock array={SkeletonItem} track={PlayListsSkeleton} />
+      <SkeletonSidebar />
     </main>
   ) : (
     <main className="main">
       <Nav />
-      <CenterBlock />
+      <CenterBlock array={PlayListItem} track={track} />
       <SideBar {...PlayLists} />
     </main>
   )
