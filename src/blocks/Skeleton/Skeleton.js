@@ -1,4 +1,4 @@
-import { PlayListsSkeleton } from './Const'
+import { PlayListsSkeleton } from '../Const'
 import SkeletonItem from './SkeletonItem'
 
 function Skeleton() {

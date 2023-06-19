@@ -34,4 +34,10 @@ const content = [
   { name: 'Исполнитель 7', id: 7 },
 ]
 
-export { USER, PlayLists, track, PlayListsSkeleton, content }
+const PLAYLISTS = [
+  { title: "day's playlist", link: '#', image: 'img/playlist01.png' },
+  { title: "day's playlist", link: '#', image: 'img/playlist02.png' },
+  { title: "day's playlist", link: '#', image: 'img/playlist03.png' },
+]
+
+export { USER, PlayLists, track, PlayListsSkeleton, content, PLAYLISTS }
