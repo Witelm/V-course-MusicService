@@ -5,7 +5,7 @@ import s from './ButtonFilter.module.css'
 function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
   const [selected, setSelected] = useState([])
   const selectedFilters = selected.length
-  const buttonStyle = isActive ? 's.active' : ''
+  const buttonStyle = isActive ? `${s.active}` : ''
   const handleSelected = (id) => {
     if (selected.includes(id)) {
       setSelected(selected.filter((item) => item !== id))
@@ -16,7 +16,10 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
 
   return (
     <React.Fragment>
-      <div className={`${s.dropdown} ${s.filter} ${s.btn}`} onClick={onClick}>
+      <div
+        className={`${s.dropdown} ${s.filter} ${s.btn} ${buttonStyle}`}
+        onClick={onClick}
+      >
         {title}
         {selectedFilters >= 1 ? (
           <div className={s.drop_elem}>{selectedFilters}</div>
