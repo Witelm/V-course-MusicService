@@ -17,7 +17,7 @@ function CenterBlock(props) {
       <Search />
       <h2 className={s.h2}>Треки</h2>
       <div className={s.filter}>
-        <div className="filter__title">Искать по:</div>
+        <div className={s.filter_title}>Искать по:</div>
 
         <ButtonFilter
           title="исполнителю"

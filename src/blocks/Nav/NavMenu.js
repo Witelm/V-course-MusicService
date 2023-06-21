@@ -9,12 +9,12 @@ function NavMenu() {
             Главное
           </a>
         </li>
-        <li className="menu__item">
+        <li className={s.item}>
           <a href="http://" className={s.link}>
             Мой плейлист
           </a>
         </li>
-        <li className="menu__item">
+        <li className={s.item}>
           <a href="http://" className={s.link}>
             Войти
           </a>
