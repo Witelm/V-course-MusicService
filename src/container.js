@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Main from './blocks/Main'
 import Bar from './blocks/Bar/Bar'
 import Footer from './blocks/Footer/Footer'
+import s from './Container.module.css'
 
 function Container() {
   const [isLoading, setLoading] = useState(true)
@@ -12,10 +13,12 @@ function Container() {
   }, [])
 
   return (
-    <div className="container">
-      <Main isLoading={isLoading} />
-      {isLoading ? null : <Bar />}
-      <Footer />
+    <div className={s.wrapper}>
+      <div className={s.container}>
+        <Main isLoading={isLoading} />
+        {isLoading ? null : <Bar />}
+        <Footer />
+      </div>
     </div>
   )
 }
