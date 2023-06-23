@@ -15,6 +15,9 @@ export const AppRouters = () => {
 
   const handleLogout = () => {
     setUser(null)
+    if (user === 'null') {
+      localStorage.removeItem('user')
+    }
   }
 
   return (
