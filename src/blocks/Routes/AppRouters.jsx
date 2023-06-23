@@ -11,13 +11,13 @@ export const AppRouters = () => {
 
   useEffect(() => {
     localStorage.setItem('user', user)
+    if (user === null) {
+      localStorage.clear()
+    }
   }, [user])
 
   const handleLogout = () => {
     setUser(null)
-    if (user === 'null') {
-      localStorage.removeItem('user')
-    }
   }
 
   return (
