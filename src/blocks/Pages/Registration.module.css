@@ -1,0 +1,44 @@
+.logblock {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 50px;
+}
+
+.block {
+  width: 366px;
+  height: 440px;
+  border: 2px solid white;
+  background: #ffffff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.btn {
+  border-radius: 10px;
+  width: 278px;
+  height: 52px;
+  background: rebeccapurple;
+  font-size: 24px;
+  padding: 10px;
+  color: white;
+}
+
+.btn:active {
+  outline: 1px solid white;
+}
+
+.input {
+  color: black;
+  font-size: 24px;
+  border: none;
+  border-bottom: 1px solid gray;
+}
+.input:focus {
+  outline: none;
+}

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Main from './blocks/Main'
+import Main from './blocks/Main/Main'
 import Bar from './blocks/Bar/Bar'
 import Footer from './blocks/Footer/Footer'
-import s from './Container.module.css'
+import s from './GlobalStyle/Container.module.css'
 
 function Container() {
   const [isLoading, setLoading] = useState(true)
