@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import s from './NavMenu.module.css'
 
 function NavMenu() {
@@ -15,9 +16,12 @@ function NavMenu() {
           </a>
         </li>
         <li className={s.item}>
-          <a href="http://" className={s.link}>
+          <Link className={s.link} to="/reg">
+            Выйти
+          </Link>
+          {/* <a href="http://" className={s.link}>
             Войти
-          </a>
+          </a> */}
         </li>
       </ul>
     </div>

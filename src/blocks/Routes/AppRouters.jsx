@@ -3,6 +3,7 @@ import { Registration } from '../Pages/Registration'
 import Container from '../../container'
 import { ProptectedRoute } from './ProptectedRoute'
 import React, { useState } from 'react'
+import { NotFound } from '../Pages/NotFound'
 
 export const AppRouters = () => {
   const navigate = useNavigate()
@@ -36,6 +37,9 @@ export const AppRouters = () => {
           />
         }
       />
+
+      <Route path="/*" element={<NotFound />} />
+
       <Route
         path="/"
         element={

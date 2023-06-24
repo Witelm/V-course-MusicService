@@ -1,5 +1,3 @@
-import PlayListItem from '../../Playlist/PlayListItem'
-import { track } from '../../Const'
 import s from './Content.module.css'
 
 export const Content = (props) => {

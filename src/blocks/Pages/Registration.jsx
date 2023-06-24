@@ -1,6 +1,5 @@
 import React from 'react'
 import s from './Registration.module.css'
-import c from '../../GlobalStyle/Container.module.css'
 
 export const Registration = (props) => {
   return (
