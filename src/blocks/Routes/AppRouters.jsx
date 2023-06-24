@@ -1,23 +1,27 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Registration } from '../Pages/Registration'
 import Container from '../../container'
 import { ProptectedRoute } from './ProptectedRoute'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 export const AppRouters = () => {
-  const [user, setUser] = useState(localStorage.getItem('user') || null)
+  const navigate = useNavigate()
 
-  const handleLogin = () => setUser({ login: '12345' })
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem('user')) || null
+  )
 
-  useEffect(() => {
-    localStorage.setItem('user', user)
-    if (user === null) {
-      localStorage.clear()
-    }
-  }, [user])
+  const handleLogin = () => {
+    const templateUser = { login: '12345' }
+    setUser(templateUser)
+    localStorage.setItem('user', JSON.stringify(templateUser))
+    navigate('/')
+  }
 
   const handleLogout = () => {
+    localStorage.removeItem('user')
     setUser(null)
+    navigate('/reg')
   }
 
   return (
@@ -35,7 +39,7 @@ export const AppRouters = () => {
       <Route
         path="/"
         element={
-          <ProptectedRoute isAllowed={Boolean(user)} State={user}>
+          <ProptectedRoute isAllowed={Boolean(user)}>
             <Container />
           </ProptectedRoute>
         }
