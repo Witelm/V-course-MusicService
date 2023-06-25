@@ -26,7 +26,11 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
         ) : null}
         {isActive ? (
           <div className={s.dropdown_ul} onMouseLeave={() => hideButton()}>
-            <Drop content={content} onSelect={handleSelected} />
+            <Drop
+              content={content}
+              onSelect={handleSelected}
+              selected={selected}
+            />
           </div>
         ) : null}
       </div>
