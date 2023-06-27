@@ -4,7 +4,7 @@ import s from './Registration.module.css'
 export const Registration = (props) => {
   const [state, setState] = useState(false)
   const handleState = () => {
-    setState(!state)
+    setState(true)
   }
 
   const ComeButton = (
@@ -13,7 +13,24 @@ export const Registration = (props) => {
     </button>
   )
   const RegisterButton = (
-    <button className={s.btn} onClick={handleState}>
+    <button className={`${state ? s.btn : s.btn_reg}`} onClick={handleState}>
+      Зарегистрироваться
+    </button>
+  )
+
+  const SendButton = (
+    <button
+      className={s.btn}
+      onClick={() => {
+        const temp = document.querySelectorAll('input')[0].value
+        localStorage.setItem('user', JSON.stringify(temp))
+        setState(false)
+
+        console.log('send request', temp, localStorage)
+
+        document.querySelectorAll('input')[0].value = ''
+      }}
+    >
       Зарегистрироваться
     </button>
   )
@@ -32,7 +49,7 @@ export const Registration = (props) => {
             <input className={s.input} placeholder="Пароль" />
 
             {state ? Input : ComeButton}
-            {RegisterButton}
+            {state ? SendButton : RegisterButton}
           </div>
         </div>
       </div>
