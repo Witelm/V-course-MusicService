@@ -8,11 +8,14 @@ export default function Audio({ play, setCompleted }) {
   }, [play])
 
   useEffect(() => {
-    setInterval(() => {
+    const TimerId = setInterval(() => {
       setCompleted(
         (audioRef.current.currentTime / audioRef.current.duration) * 100
       )
     }, 200)
+    return () => {
+      clearInterval(TimerId)
+    }
   }, [])
 
   return (
