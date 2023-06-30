@@ -38,7 +38,14 @@ export const AppRouters = () => {
         }
       />
 
-      <Route path="/*" element={<NotFound />} />
+      <Route
+        path="/*"
+        element={
+          <ProptectedRoute isAllowed={Boolean(user)}>
+            <NotFound />
+          </ProptectedRoute>
+        }
+      />
 
       <Route
         path="/"

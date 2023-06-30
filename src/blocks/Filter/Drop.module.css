@@ -8,3 +8,8 @@
   color: #d9b6ff;
   cursor: pointer;
 }
+
+.active {
+  color: #ad61ff;
+  text-decoration: underline;
+}

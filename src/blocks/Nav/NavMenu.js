@@ -2,6 +2,10 @@ import { Link } from 'react-router-dom'
 import s from './NavMenu.module.css'
 
 function NavMenu() {
+  const deleteUser = () => {
+    localStorage.removeItem('user')
+  }
+
   return (
     <div className={s.menu}>
       <ul className={s.list}>
@@ -16,7 +20,7 @@ function NavMenu() {
           </a>
         </li>
         <li className={s.item}>
-          <Link className={s.link} to="/reg">
+          <Link className={s.link} to="/reg" onClick={deleteUser}>
             Выйти
           </Link>
           {/* <a href="http://" className={s.link}>
