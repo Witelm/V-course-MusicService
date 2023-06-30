@@ -1,7 +1,14 @@
 import TrackPlay from './items/TrackPlay'
 import s from './BarPlayer.module.css'
+import { useState } from 'react'
+import Audio from '../../audio/Audio'
 
-function BarPlayer() {
+function BarPlayer({ setCompleted }) {
+  const [statePlay, setPlay] = useState(false)
+  const handlePlay = () => {
+    setPlay(!statePlay)
+  }
+
   return (
     <div className={s.bar_player}>
       <div className={s.player_controls}>
@@ -10,7 +17,10 @@ function BarPlayer() {
             <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
           </svg>
         </div>
-        <div className={`${s.btn_play} ${s.btn} ${s.button}`}>
+        <div
+          className={`${s.btn_play} ${s.btn} ${s.button}`}
+          onClick={handlePlay}
+        >
           <svg className={s.play_svg} alt="play">
             <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
           </svg>
@@ -31,6 +41,7 @@ function BarPlayer() {
           </svg>
         </div>
       </div>
+      <Audio play={statePlay} setCompleted={setCompleted} />
 
       <TrackPlay />
     </div>
