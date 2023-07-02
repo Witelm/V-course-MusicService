@@ -3,7 +3,7 @@ import s from './BarPlayer.module.css'
 import { useState } from 'react'
 import Audio from '../../audio/Audio'
 
-function BarPlayer({ setCompleted }) {
+function BarPlayer({ setCompleted, volumeState }) {
   const [statePlay, setPlay] = useState(false)
   const handlePlay = () => {
     setPlay(!statePlay)
@@ -52,7 +52,11 @@ function BarPlayer({ setCompleted }) {
           </svg>
         </div>
       </div>
-      <Audio play={statePlay} setCompleted={setCompleted} />
+      <Audio
+        volumeState={volumeState}
+        play={statePlay}
+        setCompleted={setCompleted}
+      />
 
       <TrackPlay />
     </div>

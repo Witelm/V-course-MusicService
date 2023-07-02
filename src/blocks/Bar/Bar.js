@@ -7,6 +7,8 @@ function Bar() {
   const [completed, setCompleted] = useState('0')
   const handleDuration = () => {}
 
+  const [volumeState, setVolume] = useState('0,5')
+
   return (
     <div className={s.bar}>
       <div className={s.content}>
@@ -16,8 +18,8 @@ function Bar() {
           </div>
         </div>
         <div className={s.player_block}>
-          <BarPlayer setCompleted={setCompleted} />
-          <BarVolume />
+          <BarPlayer setCompleted={setCompleted} volumeState={volumeState} />
+          <BarVolume volumeState={volumeState} setVolume={setVolume} />
         </div>
       </div>
     </div>

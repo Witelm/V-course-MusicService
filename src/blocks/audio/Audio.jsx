@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function Audio({ play, setCompleted }) {
+export default function Audio({ play, setCompleted, volumeState }) {
   const audioRef = useRef(null)
 
   useEffect(() => {
@@ -17,6 +17,10 @@ export default function Audio({ play, setCompleted }) {
       clearInterval(TimerId)
     }
   }, [])
+
+  useEffect(() => {
+    audioRef.current.volume = volumeState
+  }, [volumeState])
 
   return (
     <div>
