@@ -7,7 +7,7 @@ function Bar() {
   const [completed, setCompleted] = useState('0')
   const handleDuration = () => {}
 
-  const [volumeState, setVolume] = useState('0,5')
+  const [volumeState, setVolume] = useState(0.5)
 
   return (
     <div className={s.bar}>
