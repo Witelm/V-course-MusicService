@@ -1,6 +1,6 @@
 import s from './BarVolume.module.css'
 
-function BarVolume() {
+function BarVolume({ volumeState, setVolume }) {
   return (
     <div className={s.volume_block}>
       <div className={s.volume_content}>
@@ -14,6 +14,13 @@ function BarVolume() {
             className={`${s.progress_line} ${s.btn}`}
             type="range"
             name="range"
+            min={0}
+            max={1}
+            step={0.02}
+            value={volumeState}
+            onChange={(event) => {
+              setVolume(event.target.valueAsNumber)
+            }}
           ></input>
         </div>
       </div>

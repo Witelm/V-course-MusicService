@@ -1,7 +1,27 @@
 import TrackPlay from './items/TrackPlay'
 import s from './BarPlayer.module.css'
+import { useState } from 'react'
+import Audio from '../../audio/Audio'
 
-function BarPlayer() {
+function BarPlayer({ setCompleted, volumeState }) {
+  const [statePlay, setPlay] = useState(false)
+  const handlePlay = () => {
+    setPlay(!statePlay)
+  }
+
+  const pauseSvg = (
+    <svg className={s.play_svg} alt="pause">
+      <rect width="5" height="19" fill="#D9D9D9" />
+      <rect x="10" width="5" height="19" fill="#D9D9D9" />
+    </svg>
+  )
+
+  const playSvg = (
+    <svg className={s.play_svg} alt="play">
+      <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
+    </svg>
+  )
+
   return (
     <div className={s.bar_player}>
       <div className={s.player_controls}>
@@ -10,10 +30,11 @@ function BarPlayer() {
             <use xlinkHref="img/icon/sprite.svg#icon-prev"></use>
           </svg>
         </div>
-        <div className={`${s.btn_play} ${s.btn} ${s.button}`}>
-          <svg className={s.play_svg} alt="play">
-            <use xlinkHref="img/icon/sprite.svg#icon-play"></use>
-          </svg>
+        <div
+          className={`${s.btn_play} ${s.btn} ${s.button}`}
+          onClick={handlePlay}
+        >
+          {statePlay ? pauseSvg : playSvg}
         </div>
         <div className={`${s.btn_next} ${s.button}`}>
           <svg className={s.next_svg} alt="next">
@@ -31,6 +52,11 @@ function BarPlayer() {
           </svg>
         </div>
       </div>
+      <Audio
+        volumeState={volumeState}
+        play={statePlay}
+        setCompleted={setCompleted}
+      />
 
       <TrackPlay />
     </div>
