@@ -1,8 +1,11 @@
+import { useThemeContext } from '../context/Context'
 import s from './Drop.module.css'
 
 function Drop({ content, onSelect, selected }) {
+  const { theme } = useThemeContext()
+
   const filterItem = content.map((item, index) => (
-    <li key={index} className="">
+    <li key={index} className="" style={{ color: theme.color }}>
       <a
         className={`${s.item} ${selected.includes(item.id) ? s.active : null}`}
         href="#"
