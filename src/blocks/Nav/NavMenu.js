@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import s from './NavMenu.module.css'
-import { useThemeContext } from '../context/Context'
+import { useThemeContext, themes } from '../context/Context'
 
 const themeDarkSvg = (
   <svg
@@ -77,22 +77,41 @@ function NavMenu() {
     <div className={s.menu}>
       <ul className={s.list}>
         <li className={s.item}>
-          <a href="http://" className={s.link}>
+          <a
+            href="http://"
+            className={s.link}
+            style={{
+              color: theme.color,
+            }}
+          >
             Главное
           </a>
         </li>
         <li className={s.item}>
-          <a href="http://" className={`${s.link} ${theme}`}>
+          <a
+            href="http://"
+            className={s.link}
+            style={{
+              color: theme.color,
+            }}
+          >
             Мой плейлист
           </a>
         </li>
         <li className={s.item}>
-          <Link className={s.link} to="/reg" onClick={deleteUser}>
+          <Link
+            className={s.link}
+            style={{
+              color: theme.color,
+            }}
+            to="/reg"
+            onClick={deleteUser}
+          >
             Выйти
           </Link>
         </li>
         <li className={s.item} onClick={toggleTheme}>
-          {themeDarkSvg}
+          {theme === themes.dark ? themeDarkSvg : themeLightSvg}
         </li>
       </ul>
     </div>

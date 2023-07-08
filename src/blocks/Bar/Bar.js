@@ -2,6 +2,7 @@ import BarPlayer from './components/BarPlayer'
 import BarVolume from './components/BarVolume'
 import s from './Bar.module.css'
 import { useState } from 'react'
+import { useThemeContext } from '../context/Context'
 
 function Bar() {
   const [completed, setCompleted] = useState('0')
@@ -11,8 +12,16 @@ function Bar() {
 
   const [volumeState, setVolume] = useState(0.5)
 
+  const { theme } = useThemeContext()
+
   return (
-    <div className={s.bar}>
+    <div
+      className={s.bar}
+      style={{
+        backgroundColor: theme.background,
+        color: theme.color,
+      }}
+    >
       <div className={s.content}>
         <div className={s.player_progress} onClick={handleDuration}>
           <div className={s.prodress_bar} style={{ width: `${completed}%` }}>

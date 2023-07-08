@@ -4,7 +4,7 @@ import Container from '../../container'
 import { ProptectedRoute } from './ProptectedRoute'
 import React, { useState } from 'react'
 import { NotFound } from '../Pages/NotFound'
-import { ThemeContext } from '../context/Context'
+import { ThemeContext, themes } from '../context/Context'
 
 export const AppRouters = () => {
   const navigate = useNavigate()
@@ -26,13 +26,13 @@ export const AppRouters = () => {
     navigate('/reg')
   }
 
-  const [currentTheme, setCurrentTheme] = useState('')
+  const [currentTheme, setCurrentTheme] = useState(themes.dark)
   const toggleTheme = () => {
-    if (currentTheme === '') {
-      setCurrentTheme('s.light')
+    if (currentTheme === themes.dark) {
+      setCurrentTheme(themes.light)
       return
     }
-    return setCurrentTheme('')
+    return setCurrentTheme(themes.dark)
   }
 
   return (
