@@ -5,7 +5,9 @@ import { useState } from 'react'
 
 function Bar() {
   const [completed, setCompleted] = useState('0')
-  const handleDuration = () => {}
+  const handleDuration = (e) => {
+    console.log(e.target)
+  }
 
   const [volumeState, setVolume] = useState(0.5)
 

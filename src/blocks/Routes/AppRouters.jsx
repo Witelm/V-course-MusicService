@@ -4,6 +4,7 @@ import Container from '../../container'
 import { ProptectedRoute } from './ProptectedRoute'
 import React, { useState } from 'react'
 import { NotFound } from '../Pages/NotFound'
+import { ThemeContext } from '../context/Context'
 
 export const AppRouters = () => {
   const navigate = useNavigate()
@@ -25,36 +26,47 @@ export const AppRouters = () => {
     navigate('/reg')
   }
 
+  const [currentTheme, setCurrentTheme] = useState('')
+  const toggleTheme = () => {
+    if (currentTheme === '') {
+      setCurrentTheme('s.light')
+      return
+    }
+    return setCurrentTheme('')
+  }
+
   return (
-    <Routes>
-      <Route
-        path="/reg"
-        element={
-          <Registration
-            handleLogin={handleLogin}
-            handleLogout={handleLogout}
-            user={user}
-          />
-        }
-      />
+    <ThemeContext.Provider value={{ theme: currentTheme, toggleTheme }}>
+      <Routes>
+        <Route
+          path="/reg"
+          element={
+            <Registration
+              handleLogin={handleLogin}
+              handleLogout={handleLogout}
+              user={user}
+            />
+          }
+        />
 
-      <Route
-        path="/*"
-        element={
-          <ProptectedRoute isAllowed={Boolean(user)}>
-            <NotFound />
-          </ProptectedRoute>
-        }
-      />
+        <Route
+          path="/*"
+          element={
+            <ProptectedRoute isAllowed={Boolean(user)}>
+              <NotFound />
+            </ProptectedRoute>
+          }
+        />
 
-      <Route
-        path="/"
-        element={
-          <ProptectedRoute isAllowed={Boolean(user)}>
-            <Container />
-          </ProptectedRoute>
-        }
-      />
-    </Routes>
+        <Route
+          path="/"
+          element={
+            <ProptectedRoute isAllowed={Boolean(user)}>
+              <Container />
+            </ProptectedRoute>
+          }
+        />
+      </Routes>
+    </ThemeContext.Provider>
   )
 }

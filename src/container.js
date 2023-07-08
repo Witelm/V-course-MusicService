@@ -3,6 +3,7 @@ import Main from './blocks/Main/Main'
 import Bar from './blocks/Bar/Bar'
 import Footer from './blocks/Footer/Footer'
 import s from './GlobalStyle/Container.module.css'
+import { ThemeContext } from './blocks/context/Context'
 
 function Container() {
   const [isLoading, setLoading] = useState(true)
