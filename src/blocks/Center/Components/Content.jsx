@@ -1,10 +1,9 @@
 import s from './Content.module.css'
-import { getContent } from '../../../store/services/content'
 import PlayListItem from '../../Playlist/PlayListItem'
-import { useQuery } from 'react-query'
+import { useGetAllTracksQuery } from '../../../store/services/content'
 
 export const Content = (props) => {
-  const { data, isLoading, isError } = useQuery('content', getContent)
+  const { data, isLoading, isError } = useGetAllTracksQuery()
 
   return (
     <div className={s.content}>
@@ -19,9 +18,16 @@ export const Content = (props) => {
         </div>
       </div>
       <div className={s.playlist}>
-        {data.map((item) => (
+        {
+          <ul>
+            {data.map((track, index) => (
+              <li key={index}>{track}</li>
+            ))}
+          </ul>
+        }
+        {/* {data.map((item) => (
           <li {...item} key={item.id} />
-        ))}
+        ))} */}
 
         {/* // <props.array {...item} key={index} /> */}
 
