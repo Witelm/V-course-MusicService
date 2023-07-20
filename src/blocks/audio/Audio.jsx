@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export default function Audio({ play, setCompleted, volumeState }) {
-  const audioRef = useRef(null)
-
+export default function Audio({ audioRef, play, setCompleted, volumeState }) {
   useEffect(() => {
     play ? audioRef.current.play() : audioRef.current.pause()
   }, [play])

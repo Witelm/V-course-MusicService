@@ -5,6 +5,7 @@ import { Search } from './Components/Search'
 import { Content } from './Components/Content'
 import s from './CenterBlock.module.css'
 import { useThemeContext } from '../context/Context'
+import { getContent } from '../../store/services/content'
 
 function CenterBlock(props) {
   const [activeButton, setActiveButton] = useState('')
@@ -14,6 +15,8 @@ function CenterBlock(props) {
   }
 
   const { theme } = useThemeContext()
+
+  const contentArray = getContent()
 
   return (
     <div

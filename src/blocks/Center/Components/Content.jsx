@@ -1,6 +1,11 @@
 import s from './Content.module.css'
+import { getContent } from '../../../store/services/content'
+import PlayListItem from '../../Playlist/PlayListItem'
+import { useQuery } from 'react-query'
 
 export const Content = (props) => {
+  const { data, isLoading, isError } = useQuery('content', getContent)
+
   return (
     <div className={s.content}>
       <div className={s.title}>
@@ -14,9 +19,15 @@ export const Content = (props) => {
         </div>
       </div>
       <div className={s.playlist}>
-        {Array.from({ length: 11 }).map((item, index) => (
-          <props.array {...props.track} key={index} />
+        {data.map((item) => (
+          <li {...item} key={item.id} />
         ))}
+
+        {/* // <props.array {...item} key={index} /> */}
+
+        {/* {Array.from({ length: 11 }).map((item, index) => (
+          <props.array {...props.track} key={index} />
+        ))} */}
       </div>
     </div>
   )

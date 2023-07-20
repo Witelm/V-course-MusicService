@@ -2,16 +2,21 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import { Registration } from '../Pages/Registration'
 import Container from '../../container'
 import { ProptectedRoute } from './ProptectedRoute'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NotFound } from '../Pages/NotFound'
 import { ThemeContext, themes } from '../context/Context'
+import { useSelector } from 'react-redux'
 
 export const AppRouters = () => {
   const navigate = useNavigate()
+  const [user, setUser] = useState(false)
 
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('user')) || null
-  )
+  const userToken = useSelector((state) => state.user.token)
+
+  useEffect(() => {
+    setUser(!!userToken)
+    userToken ? navigate('/') : navigate('/reg')
+  }, [userToken])
 
   const handleLogin = () => {
     const templateUser = { login: '12345' }
@@ -42,9 +47,9 @@ export const AppRouters = () => {
           path="/reg"
           element={
             <Registration
-              handleLogin={handleLogin}
-              handleLogout={handleLogout}
-              user={user}
+            // handleLogin={handleLogin}
+            // handleLogout={handleLogout}
+            // user={user}
             />
           }
         />

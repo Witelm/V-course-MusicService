@@ -8,12 +8,20 @@ const PlayLists = {
   three: 'img/playlist03.png',
 }
 
-const track = {
+const tracks = {
   title: 'Non Stop',
   titleAdd: 'Remix',
   author: 'Стоункат, Psychopath',
   album: 'Non Stop',
   time: '4.12',
+}
+
+const track = {
+  id: 27,
+  name: 'Hangtime',
+  author: 'Wova',
+  release_date: '1991-09-06',
+  genre: 'Электронная музыка',
 }
 
 const PlayListsSkeleton = {
