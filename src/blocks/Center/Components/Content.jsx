@@ -1,10 +1,28 @@
 import s from './Content.module.css'
-import PlayListItem from '../../Playlist/PlayListItem'
 import { useGetAllTracksQuery } from '../../../store/services/content'
+import PlayListItem from '../../Playlist/PlayListItem'
 
-export const Content = (props) => {
+const FetchContent = () => {
   const { data, isLoading, isError } = useGetAllTracksQuery()
 
+  if (isLoading) {
+    return <p>loading</p>
+  }
+
+  if (isError) {
+    return <p>error</p>
+  }
+
+  return (
+    <div className={s.playlist}>
+      {data.map((track, index) => (
+        <PlayListItem {...track} key={index} />
+      ))}
+    </div>
+  )
+}
+
+export const Content = (props) => {
   return (
     <div className={s.content}>
       <div className={s.title}>
@@ -17,24 +35,15 @@ export const Content = (props) => {
           </svg>
         </div>
       </div>
-      <div className={s.playlist}>
-        {
-          <ul>
-            {data.map((track, index) => (
-              <li key={index}>{track}</li>
-            ))}
-          </ul>
-        }
-        {/* {data.map((item) => (
-          <li {...item} key={item.id} />
-        ))} */}
 
-        {/* // <props.array {...item} key={index} /> */}
+      <FetchContent />
+      {/* <div className={s.playlist}>
+        <Temp />
 
-        {/* {Array.from({ length: 11 }).map((item, index) => (
+        {Array.from({ length: 11 }).map((item, index) => (
           <props.array {...props.track} key={index} />
-        ))} */}
-      </div>
+        ))}
+      </div> */}
     </div>
   )
 }

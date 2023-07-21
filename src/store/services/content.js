@@ -1,30 +1,14 @@
 import axios from 'axios'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const ALL = 'https://painassasin.online/catalog/track/all/'
-
-// export const getContent = async () => {
-//   try {
-//     const { data } = await axios.get(ALL)
-//     console.log({ data })
-//     return { data }
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-
 export const apiContent = createApi({
-  reducerPath: 'content',
+  reducerPath: 'apiContent',
   baseQuery: fetchBaseQuery({
-    baseURL: 'https://painassasin.online',
+    baseURL: 'https://painassasin.online/catalog',
   }),
   endpoints: (builder) => ({
     getAllTracks: builder.query({
-      query: () =>
-        baseQuery({
-          url: '/catalog/track/all/',
-          method: 'GET',
-        }),
+      query: () => 'https://painassasin.online/catalog/track/all/',
     }),
   }),
 })

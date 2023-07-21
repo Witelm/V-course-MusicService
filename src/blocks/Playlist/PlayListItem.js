@@ -30,10 +30,10 @@ function PlayListItem(props) {
                 backgroundColor: theme.backgroundColor,
                 color: theme.color,
               }}
-              href="http://"
+              href={props.track_file}
             >
-              {props.title}
-              <span className={s.title_span}>({props.titleAdd})</span>
+              {props.name}
+              <span className={s.title_span}>({props.genre})</span>
             </a>
           </div>
         </div>
@@ -52,7 +52,9 @@ function PlayListItem(props) {
           <svg className={s.time_svg} alt="time">
             <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
           </svg>
-          <span className={s.time_text}>{props.time}</span>
+          <span className={s.time_text}>
+            {(props.duration_in_seconds / 60).toFixed(2)}
+          </span>
         </div>
       </div>
     </div>
