@@ -2,7 +2,6 @@ import UserSideBar from './UserSideBar'
 import { USER, PLAYLISTS } from '../Const'
 import s from './SideBar.module.css'
 import { SideBarItem } from './SideBarItem'
-import { act } from 'react-dom/test-utils'
 import { useThemeContext } from '../context/Context'
 
 function SideBar(props) {

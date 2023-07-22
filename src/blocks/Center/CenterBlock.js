@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { content } from '../Const'
+// import { content } from '../Const'
 import ButtonFilter from '../Filter/ButtonFilter'
 import { Search } from './Components/Search'
 import { Content } from './Components/Content'
@@ -72,7 +72,7 @@ function CenterBlock(props) {
           content={uniqGenre}
         />
       </div>
-      <Content {...props} />
+      <Content data={data} />
     </div>
   )
 }

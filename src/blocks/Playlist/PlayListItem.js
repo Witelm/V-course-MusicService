@@ -1,8 +1,20 @@
 import s from './PlayListItem.module.css'
 import { useThemeContext } from '../context/Context'
+import Bar from '../Bar/Bar'
+import { useDispatch, useSelector } from 'react-redux'
+import { audioGet } from '../../store/actions/creators/audio'
+import { store } from '../../store/store'
 
 function PlayListItem(props) {
   const { theme } = useThemeContext()
+
+  const dispatch = useDispatch()
+
+  const hanldeClick = (e) => {
+    e.preventDefault()
+    const target = e.target.href
+    dispatch(audioGet(target))
+  }
 
   return (
     <div className={s.item}>
@@ -30,6 +42,7 @@ function PlayListItem(props) {
                 backgroundColor: theme.backgroundColor,
                 color: theme.color,
               }}
+              onClick={hanldeClick}
               href={props.track_file}
             >
               {props.name}

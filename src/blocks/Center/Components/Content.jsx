@@ -2,20 +2,20 @@ import s from './Content.module.css'
 import { useGetAllTracksQuery } from '../../../store/services/content'
 import PlayListItem from '../../Playlist/PlayListItem'
 
-const FetchContent = () => {
-  const { data, isLoading, isError } = useGetAllTracksQuery()
+const FetchContent = (props) => {
+  // const { data, isLoading, isError } = useGetAllTracksQuery()
 
-  if (isLoading) {
-    return <p>loading</p>
-  }
+  // if (isLoading) {
+  //   return <p>loading</p>
+  // }
 
-  if (isError) {
-    return <p>error</p>
-  }
+  // if (isError) {
+  //   return <p>error</p>
+  // }
 
   return (
     <div className={s.playlist}>
-      {data.map((track, index) => (
+      {props.data.map((track, index) => (
         <PlayListItem {...track} key={index} />
       ))}
     </div>
@@ -36,7 +36,8 @@ export const Content = (props) => {
         </div>
       </div>
 
-      <FetchContent />
+      <FetchContent {...props} />
+
       {/* <div className={s.playlist}>
         <Temp />
 
