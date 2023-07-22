@@ -7,12 +7,12 @@ function Drop({ content, onSelect, selected }) {
   const filterItem = content.map((item, index) => (
     <li key={index} className="" style={{ color: theme.color }}>
       <a
-        className={`${s.item} ${selected.includes(item.id) ? s.active : null}`}
+        className={`${s.item} ${selected.includes(index) ? s.active : null}`}
         href="#"
-        id={item.id}
-        onClick={() => onSelect(item.id)}
+        id={index}
+        onClick={() => onSelect(index)}
       >
-        {item.name}
+        {item}
       </a>
     </li>
   ))

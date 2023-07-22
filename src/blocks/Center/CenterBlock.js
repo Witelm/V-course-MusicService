@@ -5,13 +5,34 @@ import { Search } from './Components/Search'
 import { Content } from './Components/Content'
 import s from './CenterBlock.module.css'
 import { useThemeContext } from '../context/Context'
+import { useGetAllTracksQuery } from '../../store/services/content'
 
 function CenterBlock(props) {
   const [activeButton, setActiveButton] = useState('')
 
+  const { data, isLoading, isError } = useGetAllTracksQuery()
+  if (isLoading) {
+    return <p>loading</p>
+  }
+
+  if (isError) {
+    return <p>error</p>
+  }
+  const contentAuthor = data
+    .map((track) => track.author)
+    .filter((author) => author !== '-')
+  const uniqAuthor = [...new Set(contentAuthor)]
+
+  const contentYear = data.map((track) => track.release_date)
+  // const sliceYear = contentYear.map((year) => year.slice(0, 5))
+
   const toggleFilter = (filter) => {
     setActiveButton(activeButton === filter ? null : filter)
+    console.log(data)
   }
+
+  const contentGenre = data.map((track) => track.genre)
+  const uniqGenre = [...new Set(contentGenre)]
 
   const { theme } = useThemeContext()
 
@@ -33,14 +54,14 @@ function CenterBlock(props) {
           isActive={activeButton === 'author'}
           onClick={() => toggleFilter('author')}
           hideButton={() => setActiveButton('')}
-          content={content}
+          content={uniqAuthor}
         />
         <ButtonFilter
           title="году выпуска"
           isActive={activeButton === 'year'}
           onClick={() => toggleFilter('year')}
           hideButton={() => setActiveButton('')}
-          content={content}
+          content={contentYear}
         />
 
         <ButtonFilter
@@ -48,7 +69,7 @@ function CenterBlock(props) {
           isActive={activeButton === 'genre'}
           onClick={() => toggleFilter('genre')}
           hideButton={() => setActiveButton('')}
-          content={content}
+          content={uniqGenre}
         />
       </div>
       <Content {...props} />
