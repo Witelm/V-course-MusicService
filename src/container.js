@@ -5,6 +5,7 @@ import Footer from './blocks/Footer/Footer'
 import s from './GlobalStyle/Container.module.css'
 import { ThemeContext, useThemeContext } from './blocks/context/Context'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { useSelector } from 'react-redux/es/hooks/useSelector'
 
 const queryClient = new QueryClient()
 
@@ -15,6 +16,13 @@ function Container() {
       setLoading(false)
     }, 5000)
   }, [])
+
+  const audioSrc = useSelector((state) => state.audio.src)
+  const [stateBar, setBar] = useState()
+  useEffect(() => {
+    setBar(audioSrc)
+    console.log('1', audioSrc)
+  }, [audioSrc])
 
   const { theme } = useThemeContext()
 
@@ -29,7 +37,8 @@ function Container() {
           }}
         >
           <Main isLoading={isLoading} />
-          {isLoading ? null : <Bar />}
+          {!!stateBar ? <Bar audioSrc={stateBar} /> : null}
+          {/* {isLoading ? null : <Bar />} */}
           <Footer />
         </div>
       </div>

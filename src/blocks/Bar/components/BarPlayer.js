@@ -1,10 +1,16 @@
 import TrackPlay from './items/TrackPlay'
 import s from './BarPlayer.module.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Audio from '../../audio/Audio'
 
-function BarPlayer({ setCompleted, volumeState, audioRef }) {
-  const [statePlay, setPlay] = useState(false)
+function BarPlayer({
+  setCompleted,
+  volumeState,
+  audioRef,
+  audioSrc,
+  setPlay,
+  statePlay,
+}) {
   const handlePlay = () => {
     setPlay(!statePlay)
   }
@@ -53,10 +59,12 @@ function BarPlayer({ setCompleted, volumeState, audioRef }) {
         </div>
       </div>
       <Audio
+        audioSrc={audioSrc}
         volumeState={volumeState}
-        play={statePlay}
+        statePlay={statePlay}
         setCompleted={setCompleted}
         audioRef={audioRef}
+        setPlay={setPlay}
       />
 
       <TrackPlay />

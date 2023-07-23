@@ -1,7 +1,7 @@
 import { AUDIO_GET } from '../actions/types/audio'
 
 const initialState = {
-  audio: '',
+  src: '',
 }
 
 export default function audioReducer(state = initialState, action) {
@@ -10,7 +10,7 @@ export default function audioReducer(state = initialState, action) {
       const { data } = action.payload
       return {
         ...state,
-        audio: data,
+        src: data,
       }
     }
     default:

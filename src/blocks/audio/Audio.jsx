@@ -1,9 +1,17 @@
 import { useEffect, useRef, useState } from 'react'
+import { useSelector } from 'react-redux'
 
-export default function Audio({ audioRef, play, setCompleted, volumeState }) {
+export default function Audio({
+  audioRef,
+  statePlay,
+  setCompleted,
+  volumeState,
+  audioSrc,
+  setPlay,
+}) {
   useEffect(() => {
-    play ? audioRef.current.play() : audioRef.current.pause()
-  }, [play])
+    statePlay ? audioRef.current.play() : audioRef.current.pause()
+  }, [statePlay])
 
   useEffect(() => {
     const TimerId = setInterval(() => {
@@ -20,10 +28,15 @@ export default function Audio({ audioRef, play, setCompleted, volumeState }) {
     audioRef.current.volume = volumeState
   }, [volumeState])
 
+  useEffect(() => {
+    audioRef.current.src = audioSrc.audioSrc
+    audioRef.current.load()
+  }, [audioSrc])
+
   return (
     <div>
       <audio ref={audioRef}>
-        <source src="media/Bobby.mp3" />
+        <source src={audioSrc.audioSrc} />
       </audio>
     </div>
   )

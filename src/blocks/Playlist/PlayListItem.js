@@ -1,6 +1,5 @@
 import s from './PlayListItem.module.css'
 import { useThemeContext } from '../context/Context'
-import Bar from '../Bar/Bar'
 import { useDispatch, useSelector } from 'react-redux'
 import { audioGet } from '../../store/actions/creators/audio'
 import { store } from '../../store/store'
@@ -13,6 +12,8 @@ function PlayListItem(props) {
   const hanldeClick = (e) => {
     e.preventDefault()
     const target = e.target.href
+    console.log(e.target.href)
+    console.log(store.getState())
     dispatch(audioGet(target))
   }
 
