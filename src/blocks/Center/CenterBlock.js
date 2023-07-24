@@ -1,11 +1,11 @@
 import { useState } from 'react'
-// import { content } from '../Const'
 import ButtonFilter from '../Filter/ButtonFilter'
 import { Search } from './Components/Search'
 import { Content } from './Components/Content'
 import s from './CenterBlock.module.css'
 import { useThemeContext } from '../context/Context'
 import { useGetAllTracksQuery } from '../../store/services/content'
+import { useSelector } from 'react-redux'
 
 function CenterBlock(props) {
   const [activeButton, setActiveButton] = useState('')
@@ -18,6 +18,9 @@ function CenterBlock(props) {
   if (isError) {
     return <p>error</p>
   }
+
+  console.log(data)
+
   const contentAuthor = data
     .map((track) => track.author)
     .filter((author) => author !== '-')
@@ -28,11 +31,14 @@ function CenterBlock(props) {
 
   const toggleFilter = (filter) => {
     setActiveButton(activeButton === filter ? null : filter)
-    console.log(data)
   }
 
   const contentGenre = data.map((track) => track.genre)
   const uniqGenre = [...new Set(contentGenre)]
+
+  const filterObj = useSelector((state) => state.filter)
+  console.log(filterObj)
+  // const filteredData = data.filter(item => item.)
 
   const { theme } = useThemeContext()
 
@@ -55,6 +61,7 @@ function CenterBlock(props) {
           onClick={() => toggleFilter('author')}
           hideButton={() => setActiveButton('')}
           content={uniqAuthor}
+          filter={activeButton}
         />
         <ButtonFilter
           title="году выпуска"
@@ -62,6 +69,7 @@ function CenterBlock(props) {
           onClick={() => toggleFilter('year')}
           hideButton={() => setActiveButton('')}
           content={contentYear}
+          filter={activeButton}
         />
 
         <ButtonFilter
@@ -70,6 +78,7 @@ function CenterBlock(props) {
           onClick={() => toggleFilter('genre')}
           hideButton={() => setActiveButton('')}
           content={uniqGenre}
+          filter={activeButton}
         />
       </div>
       <Content data={data} />

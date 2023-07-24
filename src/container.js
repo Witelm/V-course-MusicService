@@ -21,7 +21,6 @@ function Container() {
   const [stateBar, setBar] = useState()
   useEffect(() => {
     setBar(audioSrc)
-    console.log('1', audioSrc)
   }, [audioSrc])
 
   const { theme } = useThemeContext()

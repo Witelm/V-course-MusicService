@@ -2,7 +2,14 @@ import React, { useState } from 'react'
 import Drop from './Drop'
 import s from './ButtonFilter.module.css'
 
-function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
+function ButtonFilter({
+  title,
+  content,
+  isActive,
+  onClick,
+  hideButton,
+  filter,
+}) {
   const [selected, setSelected] = useState([])
   const selectedFilters = selected.length
   const buttonStyle = isActive ? `${s.active}` : ''
@@ -30,6 +37,7 @@ function ButtonFilter({ title, content, isActive, onClick, hideButton }) {
               content={content}
               onSelect={handleSelected}
               selected={selected}
+              filter={filter}
             />
           </div>
         ) : null}

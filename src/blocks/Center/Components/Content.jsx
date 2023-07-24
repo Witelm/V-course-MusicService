@@ -3,16 +3,6 @@ import { useGetAllTracksQuery } from '../../../store/services/content'
 import PlayListItem from '../../Playlist/PlayListItem'
 
 const FetchContent = (props) => {
-  // const { data, isLoading, isError } = useGetAllTracksQuery()
-
-  // if (isLoading) {
-  //   return <p>loading</p>
-  // }
-
-  // if (isError) {
-  //   return <p>error</p>
-  // }
-
   return (
     <div className={s.playlist}>
       {props.data.map((track, index) => (
