@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import { useThemeContext } from '../context/Context'
-import { useGetAllTracksQuery } from '../../store/services/content'
+import {
+  useGetAllTracksQuery,
+  useGetFavoriteAllTrackQuery,
+} from '../../store/services/content'
 import ButtonFilter from '../Filter/ButtonFilter'
 import { Search } from './Components/Search'
 import { Content } from './Components/Content'
@@ -8,9 +11,12 @@ import s from './CenterBlock.module.css'
 import { useSelector } from 'react-redux'
 
 function CenterBlock(props) {
-  const { data, isLoading, isError } = useGetAllTracksQuery()
   const [activeButton, setActiveButton] = useState('')
   const filterState = useSelector((state) => state.filter)
+  const favorite = useSelector((state) => state.favorite.show)
+
+  const { data, isLoading, isError } =
+    favorite === false ? useGetAllTracksQuery() : useGetFavoriteAllTrackQuery()
 
   if (isLoading) {
     return <p>loading</p>
@@ -72,6 +78,9 @@ function CenterBlock(props) {
       )
     })
   }
+
+  // const filteredContent =
+  //   favorite === true ? null : applyFilters(data, filterState)
 
   const filteredContent = applyFilters(data, filterState)
 

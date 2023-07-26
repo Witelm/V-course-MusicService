@@ -111,8 +111,18 @@
   margin-right: 17px;
   fill: transparent;
   stroke: #696969;
+  cursor: pointer;
 }
 
+.active {
+  color: crimson;
+  fill: crimson;
+}
+
+.time_svg:active {
+  color: crimson;
+  fill: crimson;
+}
 .time_text {
   font-style: normal;
   font-weight: 400;

@@ -1,5 +1,4 @@
 import s from './Content.module.css'
-import { useGetAllTracksQuery } from '../../../store/services/content'
 import PlayListItem from '../../Playlist/PlayListItem'
 
 const FetchContent = (props) => {
@@ -27,14 +26,6 @@ export const Content = (props) => {
       </div>
 
       <FetchContent {...props} />
-
-      {/* <div className={s.playlist}>
-        <Temp />
-
-        {Array.from({ length: 11 }).map((item, index) => (
-          <props.array {...props.track} key={index} />
-        ))}
-      </div> */}
     </div>
   )
 }

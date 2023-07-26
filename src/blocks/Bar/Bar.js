@@ -1,7 +1,7 @@
 import BarPlayer from './components/BarPlayer'
 import BarVolume from './components/BarVolume'
 import s from './Bar.module.css'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { useThemeContext } from '../context/Context'
 
 function Bar(audioSrc) {

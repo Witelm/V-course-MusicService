@@ -20,6 +20,7 @@ export const Registration = (props) => {
   //   email: 'try@mail.ru',
   // }
 
+  // const inputUser = {}
   // const inputUser = {
   //   username: '.as',
   //   password: '.as123454321',
@@ -64,18 +65,7 @@ export const Registration = (props) => {
   )
 
   const SendButton = (
-    <button
-      className={s.btn}
-      onClick={handleFunck}
-      // onClick={() => {
-
-      //   const temp = document.querySelectorAll('input')[0].value
-      //   localStorage.setItem('user', JSON.stringify(temp))
-      //   setState(false)
-
-      //   document.querySelectorAll('input')[0].value = ''
-      // }}
-    >
+    <button className={s.btn} onClick={handleFunck}>
       Зарегистрироваться
     </button>
   )

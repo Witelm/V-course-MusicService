@@ -2,19 +2,29 @@ import s from './PlayListItem.module.css'
 import { useThemeContext } from '../context/Context'
 import { useDispatch, useSelector } from 'react-redux'
 import { audioGet } from '../../store/actions/creators/audio'
-import { store } from '../../store/store'
+import { useAddTrackToFavoriteMutation } from '../../store/services/content'
 
 function PlayListItem(props) {
   const { theme } = useThemeContext()
-
   const dispatch = useDispatch()
+  const [addTrackToFavorite, { isLoading, isError, error }] =
+    useAddTrackToFavoriteMutation()
+  const TOKEN = useSelector((state) => state.user.token)
 
-  const hanldeClick = (e) => {
+  const handleClick = (e) => {
     e.preventDefault()
     const target = e.target.href
-
-    console.log(store.getState())
     dispatch(audioGet(target))
+  }
+
+  const handleAddFavorite = async () => {
+    console.log(props.id)
+    try {
+      const response = await addTrackToFavorite(props.id, TOKEN)
+      console.log(response)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -43,7 +53,7 @@ function PlayListItem(props) {
                 backgroundColor: theme.backgroundColor,
                 color: theme.color,
               }}
-              onClick={hanldeClick}
+              onClick={handleClick}
               href={props.track_file}
             >
               {props.name}
@@ -53,18 +63,21 @@ function PlayListItem(props) {
         </div>
 
         <div className={s.author}>
-          <a className={s.author_link} href="http://">
+          <a className={s.author_link} href="#">
             {props.author}
           </a>
         </div>
         <div className={s.album}>
-          <a className={s.album_link} href="http://">
+          <a className={s.album_link} href="#">
             {props.album}
           </a>
         </div>
         <div className="track__time">
           <svg className={s.time_svg} alt="time">
-            <use xlinkHref="img/icon/sprite.svg#icon-like"></use>
+            <use
+              xlinkHref="img/icon/sprite.svg#icon-like"
+              onClick={handleAddFavorite}
+            ></use>
           </svg>
           <span className={s.time_text}>
             {(props.duration_in_seconds / 60).toFixed(2)}
