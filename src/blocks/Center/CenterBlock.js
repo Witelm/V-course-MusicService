@@ -1,16 +1,17 @@
 import { useState } from 'react'
+import { useThemeContext } from '../context/Context'
+import { useGetAllTracksQuery } from '../../store/services/content'
 import ButtonFilter from '../Filter/ButtonFilter'
 import { Search } from './Components/Search'
 import { Content } from './Components/Content'
 import s from './CenterBlock.module.css'
-import { useThemeContext } from '../context/Context'
-import { useGetAllTracksQuery } from '../../store/services/content'
 import { useSelector } from 'react-redux'
 
 function CenterBlock(props) {
-  const [activeButton, setActiveButton] = useState('')
-
   const { data, isLoading, isError } = useGetAllTracksQuery()
+  const [activeButton, setActiveButton] = useState('')
+  const filterState = useSelector((state) => state.filter)
+
   if (isLoading) {
     return <p>loading</p>
   }
@@ -18,8 +19,6 @@ function CenterBlock(props) {
   if (isError) {
     return <p>error</p>
   }
-
-  console.log(data)
 
   const contentAuthor = data
     .map((track) => track.author)
@@ -29,16 +28,59 @@ function CenterBlock(props) {
   const contentYear = data.map((track) => track.release_date)
   // const sliceYear = contentYear.map((year) => year.slice(0, 5))
 
+  // const trackFilterAuthor = (data) => {
+  //   if (filterStateAuthor.length === 0) {
+  //     return data
+  //   }
+  //   const filteredAuthor = []
+  //   for (const filterItem of filterStateAuthor) {
+  //     const temp = data.filter((track) => track.author === filterItem)
+  //     filteredAuthor.push(...temp)
+  //   }
+  //   return filteredAuthor
+  // }
+  // const trackFilteredYear = (data) => {
+  //   if (filterStateYear.length === 0) {
+  //     return data
+  //   }
+  //   const filteredYear = []
+  //   for (const filterItem of filterStateYear) {
+  //     const temp = data.filter((track) => track.year === filterItem)
+  //     filteredYear.push(...temp)
+  //   }
+  //   return filteredYear
+  // }
+  // const trackFilteredGenre = (data) => {
+  //   if (filterStateGenre.length === 0) {
+  //     return data
+  //   }
+  //   const filteredGenre = []
+  //   for (const filterItem of filterStateYear) {
+  //     const temp = data.filter((track) => track.genre === filterItem)
+  //     filteredGenre.push(...temp)
+  //   }
+  //   return filteredGenre
+  // }
+
+  const applyFilters = (tracks, filterObj) => {
+    const { author, year, genre } = filterObj
+    return tracks.filter((track) => {
+      return (
+        (author.length === 0 || author.includes(track.author)) &&
+        (year.length === 0 || year.includes(track.release_date)) &&
+        (genre.length === 0 || genre.includes(track.genre))
+      )
+    })
+  }
+
+  const filteredContent = applyFilters(data, filterState)
+
   const toggleFilter = (filter) => {
     setActiveButton(activeButton === filter ? null : filter)
   }
 
   const contentGenre = data.map((track) => track.genre)
   const uniqGenre = [...new Set(contentGenre)]
-
-  const filterObj = useSelector((state) => state.filter)
-  console.log(filterObj)
-  // const filteredData = data.filter(item => item.)
 
   const { theme } = useThemeContext()
 
@@ -81,7 +123,7 @@ function CenterBlock(props) {
           filter={activeButton}
         />
       </div>
-      <Content data={data} />
+      <Content data={filteredContent} />
     </div>
   )
 }

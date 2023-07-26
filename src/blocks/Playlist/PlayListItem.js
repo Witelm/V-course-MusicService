@@ -12,7 +12,7 @@ function PlayListItem(props) {
   const hanldeClick = (e) => {
     e.preventDefault()
     const target = e.target.href
-    console.log(props.data)
+
     console.log(store.getState())
     dispatch(audioGet(target))
   }
