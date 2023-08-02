@@ -11,26 +11,36 @@ import s from './CenterBlock.module.css'
 import { useSelector } from 'react-redux'
 
 function CenterBlock(props) {
-  const { dataAll, isLoading, isError } = useGetAllTracksQuery()
-  const { dataFavorite, isLoadingFavorite, isErrorFavorite } =
-    useGetFavoriteAllTrackQuery()
+  const [data, setData] = useState()
+  const {
+    data: dataAll,
+    isLoading: isLoadingAll,
+    isError: isErrorAll,
+  } = useGetAllTracksQuery()
+  const {
+    data: dataFavorite,
+    isLoading: isLoadingFavorite,
+    isError: isErrorFavorite,
+  } = useGetFavoriteAllTrackQuery()
+
   const filterState = useSelector((state) => state.filter)
   const favorite = useSelector((state) => state.favorite.show)
   const [activeButton, setActiveButton] = useState('')
-  const [data, setData] = useState()
 
   let loadingMessage = null
-  if (isLoading || isLoadingFavorite) {
-    return (loadingMessage = <p>loading</p>)
+  if (isLoadingAll || isLoadingFavorite) {
+    loadingMessage = <p>loading</p>
   }
   let errorMessage = null
-  if (isError || isErrorFavorite) {
-    return (errorMessage = <p>Error</p>)
+  if (isErrorAll || isErrorFavorite) {
+    errorMessage = <p>Error</p>
   }
-
+  setData(dataAll)
   useEffect(() => {
     favorite ? setData(dataAll) : setData(dataFavorite)
-  }, [])
+  }, [favorite, dataAll, dataFavorite])
+
+  console.log(data)
 
   const contentAuthor = data
     .map((track) => track.author)
