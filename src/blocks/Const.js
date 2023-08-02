@@ -43,9 +43,9 @@ const content = [
 ]
 
 const PLAYLISTS = [
-  { title: "day's playlist", link: '#', image: 'img/playlist01.png' },
-  { title: "day's playlist", link: '#', image: 'img/playlist02.png' },
-  { title: "day's playlist", link: '#', image: 'img/playlist03.png' },
+  { title: "day's playlist", link: '#', image: 'img/playlist01.png', id: '0' },
+  { title: "day's playlist", link: '#', image: 'img/playlist02.png', id: '1' },
+  { title: "day's playlist", link: '#', image: 'img/playlist03.png', id: '2' },
 ]
 
 export { USER, PlayLists, track, PlayListsSkeleton, content, PLAYLISTS }

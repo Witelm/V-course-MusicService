@@ -72,11 +72,11 @@ function NavMenu() {
   const dispatch = useDispatch()
 
   const handleFavorite = () => {
-    dispatch(favoriteShow(true))
+    dispatch(favoriteShow('favorite'))
   }
 
   const handleMain = () => {
-    dispatch(favoriteShow(false))
+    dispatch(favoriteShow('all'))
   }
 
   const deleteUser = () => {

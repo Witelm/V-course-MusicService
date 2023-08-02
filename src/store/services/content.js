@@ -1,4 +1,3 @@
-import axios from 'axios'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
@@ -24,6 +23,9 @@ export const apiContent = createApi({
     getTrackDyName: builder.query({
       query: (trackName) => `track/${trackName}/`,
     }),
+    getSelectionTracks: builder.query({
+      query: () => `selection/`,
+    }),
     getFavoriteAllTrack: builder.query({
       query: () => `track/favorite/all/`,
     }),
@@ -48,4 +50,5 @@ export const {
   useAddTrackToFavoriteMutation,
   useDeleteTrackFromFavoriteMutation,
   useGetFavoriteAllTrackQuery,
+  useGetSelectionTracksQuery,
 } = apiContent

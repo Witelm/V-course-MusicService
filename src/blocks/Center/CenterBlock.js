@@ -3,6 +3,7 @@ import { useThemeContext } from '../context/Context'
 import {
   useGetAllTracksQuery,
   useGetFavoriteAllTrackQuery,
+  useGetSelectionTracksQuery,
 } from '../../store/services/content'
 import ButtonFilter from '../Filter/ButtonFilter'
 import { Search } from './Components/Search'
@@ -22,6 +23,11 @@ function CenterBlock(props) {
     isLoading: isLoadingFavorite,
     isError: isErrorFavorite,
   } = useGetFavoriteAllTrackQuery()
+  const {
+    data: dataSelection,
+    isLoading: isLoadingSelection,
+    isError: isErrorSelection,
+  } = useGetSelectionTracksQuery()
 
   const filterState = useSelector((state) => state.filter)
   const favorite = useSelector((state) => state.favorite.show)
@@ -37,16 +43,22 @@ function CenterBlock(props) {
   }
 
   useEffect(() => {
-    if (favorite) {
+    if (favorite === 'favorite') {
       if (dataFavorite) {
         setData(dataFavorite)
       }
-    } else {
+    }
+    if (favorite === 'all') {
       if (dataAll) {
         setData(dataAll)
       }
     }
-  }, [favorite, dataAll, dataFavorite])
+    if (favorite === 'selection') {
+      if (dataSelection) {
+        setData(dataSelection)
+      }
+    }
+  }, [favorite, dataAll, dataFavorite, dataSelection])
 
   console.log(dataAll, favorite)
 

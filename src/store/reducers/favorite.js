@@ -1,7 +1,7 @@
 import { FAVORITE_SHOW } from '../actions/types/favorite'
 
 const initialState = {
-  show: false,
+  show: 'all',
 }
 
 export default function filterReducer(state = initialState, action) {
