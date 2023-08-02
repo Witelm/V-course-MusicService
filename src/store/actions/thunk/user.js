@@ -13,8 +13,8 @@ export const userFunck = (inputUser, func) => async (dispatch) => {
     if (func === 'login') {
       const TOKEN = await axios.post(`${BASE_URL}token/`, inputUser)
       dispatch(getToken(TOKEN.data.access))
-      const W = dispatch(refreshToken(TOKEN))
-      console.log(W)
+      // const W = dispatch(refreshToken(TOKEN))
+      // console.log(W)
     }
 
     console.log(store.getState())

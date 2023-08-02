@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useThemeContext } from '../context/Context'
 import {
   useGetAllTracksQuery,
@@ -11,20 +11,26 @@ import s from './CenterBlock.module.css'
 import { useSelector } from 'react-redux'
 
 function CenterBlock(props) {
-  const [activeButton, setActiveButton] = useState('')
+  const { dataAll, isLoading, isError } = useGetAllTracksQuery()
+  const { dataFavorite, isLoadingFavorite, isErrorFavorite } =
+    useGetFavoriteAllTrackQuery()
   const filterState = useSelector((state) => state.filter)
   const favorite = useSelector((state) => state.favorite.show)
+  const [activeButton, setActiveButton] = useState('')
+  const [data, setData] = useState()
 
-  const { data, isLoading, isError } =
-    favorite === false ? useGetAllTracksQuery() : useGetFavoriteAllTrackQuery()
-
-  if (isLoading) {
-    return <p>loading</p>
+  let loadingMessage = null
+  if (isLoading || isLoadingFavorite) {
+    return (loadingMessage = <p>loading</p>)
+  }
+  let errorMessage = null
+  if (isError || isErrorFavorite) {
+    return (errorMessage = <p>Error</p>)
   }
 
-  if (isError) {
-    return <p>error</p>
-  }
+  useEffect(() => {
+    favorite ? setData(dataAll) : setData(dataFavorite)
+  }, [])
 
   const contentAuthor = data
     .map((track) => track.author)
@@ -32,41 +38,6 @@ function CenterBlock(props) {
   const uniqAuthor = [...new Set(contentAuthor)]
 
   const contentYear = data.map((track) => track.release_date)
-  // const sliceYear = contentYear.map((year) => year.slice(0, 5))
-
-  // const trackFilterAuthor = (data) => {
-  //   if (filterStateAuthor.length === 0) {
-  //     return data
-  //   }
-  //   const filteredAuthor = []
-  //   for (const filterItem of filterStateAuthor) {
-  //     const temp = data.filter((track) => track.author === filterItem)
-  //     filteredAuthor.push(...temp)
-  //   }
-  //   return filteredAuthor
-  // }
-  // const trackFilteredYear = (data) => {
-  //   if (filterStateYear.length === 0) {
-  //     return data
-  //   }
-  //   const filteredYear = []
-  //   for (const filterItem of filterStateYear) {
-  //     const temp = data.filter((track) => track.year === filterItem)
-  //     filteredYear.push(...temp)
-  //   }
-  //   return filteredYear
-  // }
-  // const trackFilteredGenre = (data) => {
-  //   if (filterStateGenre.length === 0) {
-  //     return data
-  //   }
-  //   const filteredGenre = []
-  //   for (const filterItem of filterStateYear) {
-  //     const temp = data.filter((track) => track.genre === filterItem)
-  //     filteredGenre.push(...temp)
-  //   }
-  //   return filteredGenre
-  // }
 
   const applyFilters = (tracks, filterObj) => {
     const { author, year, genre } = filterObj
@@ -78,9 +49,6 @@ function CenterBlock(props) {
       )
     })
   }
-
-  // const filteredContent =
-  //   favorite === true ? null : applyFilters(data, filterState)
 
   const filteredContent = applyFilters(data, filterState)
 
@@ -101,6 +69,8 @@ function CenterBlock(props) {
         color: theme.color,
       }}
     >
+      {loadingMessage}
+      {errorMessage}
       <Search />
       <h2 className={s.h2}>Треки</h2>
       <div className={s.filter}>

@@ -7,9 +7,10 @@ const initialState = {
 export default function filterReducer(state = initialState, action) {
   switch (action.type) {
     case FAVORITE_SHOW: {
+      const { data } = action.payload
       return {
         ...state,
-        show: !state.show,
+        show: data,
       }
     }
     default:

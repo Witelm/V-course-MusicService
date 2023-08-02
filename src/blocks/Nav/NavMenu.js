@@ -72,7 +72,11 @@ function NavMenu() {
   const dispatch = useDispatch()
 
   const handleFavorite = () => {
-    dispatch(favoriteShow())
+    dispatch(favoriteShow(true))
+  }
+
+  const handleMain = () => {
+    dispatch(favoriteShow(false))
   }
 
   const deleteUser = () => {
@@ -86,8 +90,9 @@ function NavMenu() {
       <ul className={s.list}>
         <li className={s.item}>
           <a
-            href="http://"
+            href="#"
             className={s.link}
+            onClick={handleMain}
             style={{
               color: theme.color,
             }}

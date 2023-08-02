@@ -21,16 +21,16 @@ export const Registration = (props) => {
   // }
 
   // const inputUser = {}
-  // const inputUser = {
-  //   username: '.as',
-  //   password: '.as123454321',
-  //   email: 'as@mail.ru',
-  // }
   const inputUser = {
-    username: 'qq',
-    password: 'qq123454321',
-    email: 'qq@mail.ru',
+    username: '.as',
+    password: '.as123454321',
+    email: 'as@mail.ru',
   }
+  // const inputUser = {
+  //   username: 'qq',
+  //   password: 'qq123454321',
+  //   email: 'qq@mail.ru',
+  // }
 
   // const inputUser = {}
 

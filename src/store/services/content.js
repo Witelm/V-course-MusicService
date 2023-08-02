@@ -1,17 +1,19 @@
 import axios from 'axios'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { useSelector } from 'react-redux'
 
-const getToken = () => {
-  const TOKEN = useSelector((state) => state.user.token)
-  return TOKEN
-}
+const baseQuery = fetchBaseQuery({
+  baseUrl: 'https://painassasin.online/catalog/',
+  prepareHeaders: (headers, { getState }) => {
+    const token = getState().user.token
+    if (token) {
+      headers.set('authorization', `Bearer ${token}`)
+    }
+  },
+})
 
 export const apiContent = createApi({
   reducerPath: 'apiContent',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://painassasin.online/catalog/',
-  }),
+  baseQuery,
   endpoints: (builder) => ({
     getAllTracks: builder.query({
       query: () => 'track/all/',
@@ -26,13 +28,10 @@ export const apiContent = createApi({
       query: () => `track/favorite/all/`,
     }),
     addTrackToFavorite: builder.mutation({
-      query: (trackId, TOKEN) => ({
+      query: (trackId) => ({
         url: `track/${trackId}/favorite/`,
         method: 'POST',
         body: trackId,
-        headers: {
-          Authorization: `Bearer ${TOKEN}`,
-        },
       }),
     }),
     deleteTrackFromFavorite: builder.mutation({
