@@ -2,14 +2,22 @@ import s from './PlayListItem.module.css'
 import { useThemeContext } from '../context/Context'
 import { useDispatch, useSelector } from 'react-redux'
 import { audioGet } from '../../store/actions/creators/audio'
-import { useAddTrackToFavoriteMutation } from '../../store/services/content'
+import {
+  useAddTrackToFavoriteMutation,
+  useDeleteTrackFromFavoriteMutation,
+  useGetFavoriteAllTrackQuery,
+} from '../../store/services/content'
 
 function PlayListItem(props) {
   const { theme } = useThemeContext()
   const dispatch = useDispatch()
   const [addTrackToFavorite, { isLoading, isError, error }] =
     useAddTrackToFavoriteMutation()
+  const [deleteTrackFromFavorite, { isLoadingDel, isErrorDel, errorDel }] =
+    useDeleteTrackFromFavoriteMutation()
   const TOKEN = useSelector((state) => state.user.token)
+  const favorite = useSelector((state) => state.favorite.show)
+  const { refetch: refetchFavorite } = useGetFavoriteAllTrackQuery()
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -18,13 +26,27 @@ function PlayListItem(props) {
   }
 
   const handleAddFavorite = async () => {
-    console.log(props.id)
+    console.log(favorite)
     try {
       const response = await addTrackToFavorite(props.id, TOKEN)
-      console.log(response)
+      refetchFavorite()
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const handleRemoveFavorite = async () => {
+    console.log(favorite)
+    try {
+      const response = await deleteTrackFromFavorite(props.id, TOKEN)
+      refetchFavorite()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleFavorite = () => {
+    favorite ? handleRemoveFavorite() : handleAddFavorite()
   }
 
   return (
@@ -76,7 +98,7 @@ function PlayListItem(props) {
           <svg className={s.time_svg} alt="time">
             <use
               xlinkHref="img/icon/sprite.svg#icon-like"
-              onClick={handleAddFavorite}
+              onClick={handleFavorite}
             ></use>
           </svg>
           <span className={s.time_text}>
