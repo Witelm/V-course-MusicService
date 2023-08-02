@@ -11,7 +11,7 @@ import s from './CenterBlock.module.css'
 import { useSelector } from 'react-redux'
 
 function CenterBlock(props) {
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
   const {
     data: dataAll,
     isLoading: isLoadingAll,
@@ -35,12 +35,20 @@ function CenterBlock(props) {
   if (isErrorAll || isErrorFavorite) {
     errorMessage = <p>Error</p>
   }
-  setData(dataAll)
+
   useEffect(() => {
-    favorite ? setData(dataAll) : setData(dataFavorite)
+    if (favorite) {
+      if (dataFavorite) {
+        setData(dataFavorite)
+      }
+    } else {
+      if (dataAll) {
+        setData(dataAll)
+      }
+    }
   }, [favorite, dataAll, dataFavorite])
 
-  console.log(data)
+  console.log(dataAll, favorite)
 
   const contentAuthor = data
     .map((track) => track.author)
