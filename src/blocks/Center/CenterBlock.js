@@ -132,7 +132,7 @@ function CenterBlock(props) {
           filter={activeButton}
         />
       </div>
-      <Content data={filteredContent} />
+      <Content data={filteredContent} dataFavorite={dataFavorite} />
     </div>
   )
 }

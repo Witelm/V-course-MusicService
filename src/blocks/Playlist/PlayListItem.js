@@ -7,6 +7,7 @@ import {
   useDeleteTrackFromFavoriteMutation,
   useGetFavoriteAllTrackQuery,
 } from '../../store/services/content'
+import { useEffect, useState } from 'react'
 
 function PlayListItem(props) {
   const { theme } = useThemeContext()
@@ -15,9 +16,15 @@ function PlayListItem(props) {
     useAddTrackToFavoriteMutation()
   const [deleteTrackFromFavorite, { isLoadingDel, isErrorDel, errorDel }] =
     useDeleteTrackFromFavoriteMutation()
+  const { data: dataFavorite } = useGetFavoriteAllTrackQuery()
   const TOKEN = useSelector((state) => state.user.token)
   const favorite = useSelector((state) => state.favorite.show)
   const { refetch: refetchFavorite } = useGetFavoriteAllTrackQuery()
+  const [Favorite, setFavorite] = useState([])
+
+  useEffect(() => {
+    setFavorite(dataFavorite.map((item) => item.id))
+  }, [dataFavorite])
 
   const handleClick = (e) => {
     e.preventDefault()
@@ -26,7 +33,6 @@ function PlayListItem(props) {
   }
 
   const handleAddFavorite = async () => {
-    console.log('1')
     try {
       const response = await addTrackToFavorite(props.id, TOKEN)
       refetchFavorite()
@@ -36,7 +42,6 @@ function PlayListItem(props) {
   }
 
   const handleRemoveFavorite = async () => {
-    console.log('2')
     try {
       const response = await deleteTrackFromFavorite(props.id, TOKEN)
       refetchFavorite()
@@ -46,7 +51,7 @@ function PlayListItem(props) {
   }
 
   const handleFavorite = () => {
-    console.log(favorite)
+    console.log(Favorite)
     favorite === 'favorite' ? handleRemoveFavorite() : handleAddFavorite()
   }
 
@@ -96,7 +101,10 @@ function PlayListItem(props) {
           </a>
         </div>
         <div className="track__time">
-          <svg className={s.time_svg} alt="time">
+          <svg
+            className={`${Favorite.includes(props.id) ? s.active : s.time_svg}`}
+            alt="time"
+          >
             <use
               xlinkHref="img/icon/sprite.svg#icon-like"
               onClick={handleFavorite}
