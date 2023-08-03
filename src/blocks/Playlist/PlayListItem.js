@@ -28,8 +28,9 @@ function PlayListItem(props) {
 
   const handleClick = (e) => {
     e.preventDefault()
+    console.log(e.target, props.author, props.album)
     const target = e.target.href
-    dispatch(audioGet(target))
+    dispatch(audioGet(target, props.author, props.album))
   }
 
   const handleAddFavorite = async () => {

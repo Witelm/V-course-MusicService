@@ -1,6 +1,8 @@
+import { useSelector } from 'react-redux'
 import s from './TrackPlay.module.css'
 
 function TrackPlay() {
+  const audioInfo = useSelector((state) => state.audio)
   return (
     <div className={s.track_play}>
       <div className={s.play_contain}>
@@ -10,13 +12,13 @@ function TrackPlay() {
           </svg>
         </div>
         <div className={s.play_author}>
-          <a className={s.author_link} href="http://">
-            Ты та...
+          <a className={s.author_link} href="#">
+            {audioInfo.author}
           </a>
         </div>
         <div className={s.play_album}>
-          <a className={s.album_link} href="http://">
-            Баста
+          <a className={s.album_link} href="#">
+            {audioInfo.album}
           </a>
         </div>
       </div>
