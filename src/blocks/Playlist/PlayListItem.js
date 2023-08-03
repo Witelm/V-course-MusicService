@@ -26,6 +26,7 @@ function PlayListItem(props) {
   }
 
   const handleAddFavorite = async () => {
+    console.log('1')
     try {
       const response = await addTrackToFavorite(props.id, TOKEN)
       refetchFavorite()
@@ -35,7 +36,7 @@ function PlayListItem(props) {
   }
 
   const handleRemoveFavorite = async () => {
-    console.log(favorite)
+    console.log('2')
     try {
       const response = await deleteTrackFromFavorite(props.id, TOKEN)
       refetchFavorite()
@@ -45,7 +46,8 @@ function PlayListItem(props) {
   }
 
   const handleFavorite = () => {
-    favorite ? handleRemoveFavorite() : handleAddFavorite()
+    console.log(favorite)
+    favorite === 'favorite' ? handleRemoveFavorite() : handleAddFavorite()
   }
 
   return (

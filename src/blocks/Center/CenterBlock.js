@@ -59,6 +59,7 @@ function CenterBlock(props) {
         setData(dataSelection[idSelection].items)
       }
     }
+    console.log(favorite)
   }, [favorite, dataAll, dataFavorite, idSelection])
 
   const contentAuthor = data
