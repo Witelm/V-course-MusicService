@@ -1,6 +1,8 @@
+import { useThemeContext } from '../../context/Context'
 import s from './Search.module.css'
 
 export const Search = () => {
+  const { theme } = useThemeContext()
   return (
     <div className={s.search}>
       <svg className={s.svg}>
@@ -11,6 +13,7 @@ export const Search = () => {
         type="search"
         placeholder="Поиск"
         name="search"
+        style={{ color: theme.color }}
       ></input>
     </div>
   )

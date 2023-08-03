@@ -4,6 +4,7 @@ import Container from '../../container'
 import { ProptectedRoute } from './ProptectedRoute'
 import React, { useState } from 'react'
 import { NotFound } from '../Pages/NotFound'
+import { ThemeContext, themes } from '../context/Context'
 
 export const AppRouters = () => {
   const navigate = useNavigate()
@@ -25,36 +26,47 @@ export const AppRouters = () => {
     navigate('/reg')
   }
 
+  const [currentTheme, setCurrentTheme] = useState(themes.dark)
+  const toggleTheme = () => {
+    if (currentTheme === themes.dark) {
+      setCurrentTheme(themes.light)
+      return
+    }
+    return setCurrentTheme(themes.dark)
+  }
+
   return (
-    <Routes>
-      <Route
-        path="/reg"
-        element={
-          <Registration
-            handleLogin={handleLogin}
-            handleLogout={handleLogout}
-            user={user}
-          />
-        }
-      />
+    <ThemeContext.Provider value={{ theme: currentTheme, toggleTheme }}>
+      <Routes>
+        <Route
+          path="/reg"
+          element={
+            <Registration
+              handleLogin={handleLogin}
+              handleLogout={handleLogout}
+              user={user}
+            />
+          }
+        />
 
-      <Route
-        path="/*"
-        element={
-          <ProptectedRoute isAllowed={Boolean(user)}>
-            <NotFound />
-          </ProptectedRoute>
-        }
-      />
+        <Route
+          path="/*"
+          element={
+            <ProptectedRoute isAllowed={Boolean(user)}>
+              <NotFound />
+            </ProptectedRoute>
+          }
+        />
 
-      <Route
-        path="/"
-        element={
-          <ProptectedRoute isAllowed={Boolean(user)}>
-            <Container />
-          </ProptectedRoute>
-        }
-      />
-    </Routes>
+        <Route
+          path="/"
+          element={
+            <ProptectedRoute isAllowed={Boolean(user)}>
+              <Container />
+            </ProptectedRoute>
+          }
+        />
+      </Routes>
+    </ThemeContext.Provider>
   )
 }

@@ -8,10 +8,19 @@ import PlayListItem from '../Playlist/PlayListItem'
 import SkeletonItem from '../Skeleton/SkeletonItem'
 import { SkeletonSidebar } from '../Skeleton/SkeletonSidebar'
 import s from './Main.module.css'
+import { useThemeContext } from '../context/Context'
 
 function Main(props) {
+  const { theme } = useThemeContext()
+
   return props.isLoading ? (
-    <main className={s.main}>
+    <main
+      className={s.main}
+      style={{
+        backgroundColor: theme.background,
+        color: theme.color,
+      }}
+    >
       <Nav />
       <CenterBlock array={SkeletonItem} track={PlayListsSkeleton} />
       <SkeletonSidebar />
