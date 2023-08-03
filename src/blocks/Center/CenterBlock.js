@@ -31,6 +31,7 @@ function CenterBlock(props) {
 
   const filterState = useSelector((state) => state.filter)
   const favorite = useSelector((state) => state.favorite.show)
+  const idSelection = useSelector((state) => state.favorite.id)
   const [activeButton, setActiveButton] = useState('')
 
   let loadingMessage = null
@@ -55,12 +56,10 @@ function CenterBlock(props) {
     }
     if (favorite === 'selection') {
       if (dataSelection) {
-        setData(dataSelection)
+        setData(dataSelection[idSelection].items)
       }
     }
-  }, [favorite, dataAll, dataFavorite, dataSelection])
-
-  console.log(dataAll, favorite)
+  }, [favorite, dataAll, dataFavorite, idSelection])
 
   const contentAuthor = data
     .map((track) => track.author)

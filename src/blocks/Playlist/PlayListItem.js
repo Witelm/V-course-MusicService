@@ -26,7 +26,6 @@ function PlayListItem(props) {
   }
 
   const handleAddFavorite = async () => {
-    console.log(favorite)
     try {
       const response = await addTrackToFavorite(props.id, TOKEN)
       refetchFavorite()
