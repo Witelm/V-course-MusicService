@@ -6,6 +6,8 @@ import {
   useAddTrackToFavoriteMutation,
   useDeleteTrackFromFavoriteMutation,
   useGetFavoriteAllTrackQuery,
+  useGetAllTracksQuery,
+  useGetSelectionTracksQuery,
 } from '../../store/services/content'
 import { useEffect, useState } from 'react'
 
@@ -16,21 +18,39 @@ function PlayListItem(props) {
     useAddTrackToFavoriteMutation()
   const [deleteTrackFromFavorite, { isLoadingDel, isErrorDel, errorDel }] =
     useDeleteTrackFromFavoriteMutation()
+
   const { data: dataFavorite } = useGetFavoriteAllTrackQuery()
+  const { data: dataSelection } = useGetSelectionTracksQuery()
+  const { data: dataAll } = useGetAllTracksQuery()
+
   const TOKEN = useSelector((state) => state.user.token)
-  const favorite = useSelector((state) => state.favorite.show)
+  const favorite = useSelector((state) => state.favorite)
   const { refetch: refetchFavorite } = useGetFavoriteAllTrackQuery()
   const [Favorite, setFavorite] = useState([])
 
+  const functionData = (data) => {
+    return data.map((item) => item.id)
+  }
+
   useEffect(() => {
-    setFavorite(dataFavorite.map((item) => item.id))
+    setFavorite(functionData(dataFavorite))
   }, [dataFavorite])
 
   const handleClick = (e) => {
     e.preventDefault()
-    console.log(e.target, props.author, props.album)
+    let array = []
+    if (favorite.show === 'all') {
+      array = functionData(dataAll)
+    }
+    if (favorite.show === 'favorite') {
+      array = functionData(dataFavorite)
+    }
+    if (favorite.show === 'selection') {
+      array = functionData(dataSelection[favorite.id].items)
+      console.log(dataSelection[favorite.id].items)
+    }
     const target = e.target.href
-    dispatch(audioGet(target, props.author, props.album))
+    dispatch(audioGet(props.id, props.author, props.album, array))
   }
 
   const handleAddFavorite = async () => {
@@ -52,8 +72,7 @@ function PlayListItem(props) {
   }
 
   const handleFavorite = () => {
-    console.log(Favorite)
-    favorite === 'favorite' ? handleRemoveFavorite() : handleAddFavorite()
+    favorite.show === 'favorite' ? handleRemoveFavorite() : handleAddFavorite()
   }
 
   return (

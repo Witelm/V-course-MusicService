@@ -26,13 +26,13 @@ export const Registration = (props) => {
   //   password: '.as123454321',
   //   email: 'as@mail.ru',
   // }
-  // const inputUser = {
-  //   username: 'qq',
-  //   password: 'qq123454321',
-  //   email: 'qq@mail.ru',
-  // }
+  const inputUser = {
+    username: 'qq',
+    password: 'qq123454321',
+    email: 'qq@mail.ru',
+  }
 
-  const inputUser = {}
+  // const inputUser = {}
 
   const loginInput = (e) => {
     inputUser.username = e.target.value

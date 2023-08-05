@@ -59,7 +59,6 @@ function CenterBlock(props) {
         setData(dataSelection[idSelection].items)
       }
     }
-    console.log(favorite)
   }, [favorite, dataAll, dataFavorite, idSelection])
 
   const contentAuthor = data
@@ -132,7 +131,12 @@ function CenterBlock(props) {
           filter={activeButton}
         />
       </div>
-      <Content data={filteredContent} dataFavorite={dataFavorite} />
+      <Content
+        data={filteredContent}
+        dataFavorite={dataFavorite}
+        dataAll={dataAll}
+        dataSelection={dataSelection}
+      />
     </div>
   )
 }
