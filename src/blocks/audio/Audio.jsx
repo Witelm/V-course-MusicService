@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { useGetAllTracksQuery } from '../../store/services/content'
+import { useDispatch } from 'react-redux'
+import { audioGet } from '../../store/actions/creators/audio'
 
 export default function Audio({
   audioRef,
@@ -11,7 +11,11 @@ export default function Audio({
   dataAll,
   repeat,
   setPlay,
+  stateNextSong,
+  audioState,
 }) {
+  const dispatch = useDispatch()
+
   useEffect(() => {
     statePlay ? audioRef.current.play() : audioRef.current.pause()
   }, [statePlay])
@@ -26,16 +30,29 @@ export default function Audio({
           audioRef.current.currentTime = 0
           audioRef.current.play()
         } else {
-          audioRef.current.currentTime = 0
-          audioRef.current.pause()
-          setPlay(false)
+          console.log(stateNextSong)
+          const audioNext = dataAll.filter(
+            (track) => track.id === stateNextSong
+          )[0]
+          console.log(audioNext)
+          dispatch(
+            audioGet(
+              stateNextSong,
+              audioNext.author,
+              audioNext.album,
+              audioState.array
+            )
+          )
+          audioRef.current.addEventListener('loadedmetadata', () => {
+            audioRef.current.play()
+          })
         }
       }
     }, 200)
     return () => {
       clearInterval(TimerId)
     }
-  }, [repeat])
+  }, [repeat, stateNextSong])
 
   useEffect(() => {
     audioRef.current.volume = volumeState

@@ -4,7 +4,7 @@ import Audio from '../../audio/Audio'
 import { useDispatch, useSelector } from 'react-redux'
 import { useGetAllTracksQuery } from '../../../store/services/content'
 import { audioGet } from '../../../store/actions/creators/audio'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function BarPlayer({
   setCompleted,
@@ -18,6 +18,12 @@ function BarPlayer({
   const dispatch = useDispatch()
   const { data: dataAll } = useGetAllTracksQuery()
   const [repeat, setRepeat] = useState(false)
+  const [stateNextSong, setNextSong] = useState()
+
+  useEffect(() => {
+    setNextSong(playNextPrev(1))
+    console.log(stateNextSong)
+  }, [audioSrc])
 
   const handlePlay = () => {
     setPlay(!statePlay)
@@ -55,7 +61,6 @@ function BarPlayer({
     audioRef.current.currentTime = 0
     const next = playNextPrev(1)
     const audioNext = dataAll.filter((track) => track.id === next)[0]
-
     dispatch(
       audioGet(next, audioNext.author, audioNext.album, audioState.array)
     )
@@ -154,6 +159,8 @@ function BarPlayer({
         setPlay={setPlay}
         dataAll={dataAll}
         repeat={repeat}
+        stateNextSong={stateNextSong}
+        audioState={audioState}
       />
 
       <TrackPlay />
