@@ -100,7 +100,7 @@ function CenterBlock(props) {
     >
       {loadingMessage}
       {errorMessage}
-      <Search />
+      <Search data={data} setData={setData} dataAll={dataAll} />
       <h2 className={s.h2}>Треки</h2>
       <div className={s.filter}>
         <div className={s.filter_title}>Искать по:</div>
