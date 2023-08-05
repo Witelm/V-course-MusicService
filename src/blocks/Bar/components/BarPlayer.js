@@ -18,20 +18,44 @@ function BarPlayer({
   const dispatch = useDispatch()
   const { data: dataAll } = useGetAllTracksQuery()
   const [repeat, setRepeat] = useState(false)
+  const [stateShuffle, setShuffle] = useState(false)
   const [stateNextSong, setNextSong] = useState()
+  const [audioStateArray, setAudioStateArray] = useState([audioState.array])
 
   useEffect(() => {
     setNextSong(playNextPrev(1))
     console.log(stateNextSong)
   }, [audioSrc])
 
+  useEffect(() => {
+    if (stateShuffle) {
+      setAudioStateArray(functionShuffle())
+    } else {
+      setAudioStateArray(audioState.array)
+    }
+    console.log(audioStateArray)
+  }, [stateShuffle])
+
   const handlePlay = () => {
     setPlay(!statePlay)
   }
 
+  function functionShuffle() {
+    const shuffledArray = audioState.array.slice()
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const randomIndex = Math.floor(Math.random() * (i + 1))
+      ;[shuffledArray[i], shuffledArray[randomIndex]] = [
+        shuffledArray[randomIndex],
+        shuffledArray[i],
+      ]
+    }
+    console.log(shuffledArray, stateShuffle)
+    return shuffledArray
+  }
+
   const playNextPrev = (destination) => {
-    const audioStateArray = audioState.array
     const index = audioStateArray.indexOf(audioState.src)
+    console.log(index, audioStateArray)
     if (index !== -1 && index + 1 < audioStateArray.length) {
       return audioStateArray[index + destination]
     }
@@ -60,6 +84,7 @@ function BarPlayer({
     setCompleted('0')
     audioRef.current.currentTime = 0
     const next = playNextPrev(1)
+    console.log(next)
     const audioNext = dataAll.filter((track) => track.id === next)[0]
     dispatch(
       audioGet(next, audioNext.author, audioNext.album, audioState.array)
@@ -94,8 +119,10 @@ function BarPlayer({
   }
 
   const handleShuffle = () => {
-    console.log('shuffle')
-    console.log('repeat', repeat)
+    if (stateShuffle === false) {
+      return setShuffle(true)
+    }
+    return setShuffle(false)
   }
 
   const pauseSvg = (
@@ -142,10 +169,13 @@ function BarPlayer({
           </svg>
         </div>
         <div
-          className={`${s.btn_shuffle} ${s.btn_icon} ${s.button}`}
+          className={`${s.btn_shuffle} ${s.btn_icon} ${s.button} `}
           onClick={handleShuffle}
         >
-          <svg className={s.shuffle_svg} alt="shuffle">
+          <svg
+            className={`${s.shuffle_svg} ${stateShuffle ? s.active : ''}`}
+            alt="shuffle"
+          >
             <use xlinkHref="img/icon/sprite.svg#icon-shuffle"></use>
           </svg>
         </div>

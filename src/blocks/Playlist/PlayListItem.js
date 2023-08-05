@@ -47,9 +47,7 @@ function PlayListItem(props) {
     }
     if (favorite.show === 'selection') {
       array = functionData(dataSelection[favorite.id].items)
-      console.log(dataSelection[favorite.id].items)
     }
-    const target = e.target.href
     dispatch(audioGet(props.id, props.author, props.album, array))
   }
 

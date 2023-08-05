@@ -139,3 +139,7 @@
   stroke: #ffffff;
   cursor: pointer;
 }
+.active {
+  color: crimson;
+  fill: crimson;
+}
