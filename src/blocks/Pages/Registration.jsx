@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import s from './Registration.module.css'
 import { userFunck } from '../../store/actions/thunk/user'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,6 +7,12 @@ import { store } from '../../store/store'
 export const Registration = (props) => {
   const dispatch = useDispatch()
   const [state, setState] = useState(false)
+
+  const [stateUser, setUser] = useState('')
+  const [stateEmail, setEmail] = useState('')
+  const [statePass, setPass] = useState('')
+  const [statePassTwo, setPassTwo] = useState('')
+
   const user = useSelector((state) => state.user.username)
   const handleState = () => {
     setState(true)
@@ -36,12 +42,15 @@ export const Registration = (props) => {
 
   const loginInput = (e) => {
     inputUser.username = e.target.value
+    setUser(e.target.value)
   }
   const passInput = (e) => {
     inputUser.password = e.target.value
+    setPass(e.target.value)
   }
   const emailInput = (e) => {
     inputUser.email = e.target.value
+    setEmail(e.target.value)
   }
 
   const handleFunck = (e) => {
@@ -50,6 +59,9 @@ export const Registration = (props) => {
       ? dispatch(userFunck(inputUser, 'login'))
       : dispatch(userFunck(inputUser, 'signup'))
     setState(false)
+    setUser('')
+    setEmail('')
+    setPass('')
   }
 
   const ComeButton = (
@@ -83,17 +95,20 @@ export const Registration = (props) => {
             <input
               className={s.input}
               placeholder="Логин"
+              value={stateUser}
               onChange={loginInput}
             />
             <input
               className={s.input}
               placeholder="Пароль"
+              value={statePass}
               onChange={passInput}
             />
 
             <input
               className={s.input}
               placeholder="email"
+              value={stateEmail}
               onChange={emailInput}
             />
 
