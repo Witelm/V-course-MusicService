@@ -30,11 +30,9 @@ export default function Audio({
           audioRef.current.currentTime = 0
           audioRef.current.play()
         } else {
-          console.log(stateNextSong)
           const audioNext = dataAll.filter(
             (track) => track.id === stateNextSong
           )[0]
-          console.log(audioNext)
           dispatch(
             audioGet(
               stateNextSong,

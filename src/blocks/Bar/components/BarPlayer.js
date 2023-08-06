@@ -24,7 +24,6 @@ function BarPlayer({
 
   useEffect(() => {
     setNextSong(playNextPrev(1))
-    console.log(stateNextSong)
   }, [audioSrc])
 
   useEffect(() => {
@@ -33,7 +32,6 @@ function BarPlayer({
     } else {
       setAudioStateArray(audioState.array)
     }
-    console.log(audioStateArray)
   }, [stateShuffle])
 
   const handlePlay = () => {
@@ -49,13 +47,11 @@ function BarPlayer({
         shuffledArray[i],
       ]
     }
-    console.log(shuffledArray, stateShuffle)
     return shuffledArray
   }
 
   const playNextPrev = (destination) => {
     const index = audioStateArray.indexOf(audioState.src)
-    console.log(index, audioStateArray)
     if (index !== -1 && index + 1 < audioStateArray.length) {
       return audioStateArray[index + destination]
     }
@@ -84,7 +80,6 @@ function BarPlayer({
     setCompleted('0')
     audioRef.current.currentTime = 0
     const next = playNextPrev(1)
-    console.log(next)
     const audioNext = dataAll.filter((track) => track.id === next)[0]
     dispatch(
       audioGet(next, audioNext.author, audioNext.album, audioState.array)
@@ -108,17 +103,18 @@ function BarPlayer({
     audioRef.current.addEventListener('loadedmetadata', () => {
       audioRef.current.play()
     })
-    console.log(prev)
   }
 
   const handleRepeat = () => {
     if (repeat === false) {
+      setShuffle(false)
       return setRepeat(true)
     }
     return setRepeat(false)
   }
 
   const handleShuffle = () => {
+    setRepeat(false)
     if (stateShuffle === false) {
       return setShuffle(true)
     }

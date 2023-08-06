@@ -9,7 +9,6 @@ export const SideBarItem = (props) => {
 
   const handleSelection = (e) => {
     e.preventDefault()
-    console.log(props.id)
     dispatch(favoriteShow('selection', props.id))
   }
   return (

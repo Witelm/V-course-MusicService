@@ -25,17 +25,14 @@ function TrackPlay() {
 
   useEffect(() => {
     setFavorite(functionData(dataFavorite))
-    console.log(audioInfo)
   }, [dataFavorite])
 
   const handleLike = () => {
-    console.log('like')
     addTrackToFavorite(audioInfo.src, TOKEN)
     refetchFavorite()
   }
 
   const handleDisLike = () => {
-    console.log('dislike')
     deleteTrackFromFavorite(audioInfo.src, TOKEN)
     refetchFavorite()
   }

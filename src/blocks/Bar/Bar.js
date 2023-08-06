@@ -15,17 +15,10 @@ function Bar(audioSrc) {
 
   const { theme } = useThemeContext()
 
-  const PositionX = (w) => {
-    console.log(
-      w.clientX,
-      w.target.offsetWidth,
-      Math.round((w.clientX / w.target.offsetWidth) * audioRef.current.duration)
-    )
-
+  const PositionX = (e) => {
     const temp = Math.round(
-      (w.clientX / w.target.offsetWidth) * audioRef.current.duration
+      (e.clientX / e.target.offsetWidth) * audioRef.current.duration
     )
-
     audioRef.current.currentTime = temp
   }
 
