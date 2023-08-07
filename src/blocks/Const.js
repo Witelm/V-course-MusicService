@@ -8,12 +8,20 @@ const PlayLists = {
   three: 'img/playlist03.png',
 }
 
-const track = {
+const tracks = {
   title: 'Non Stop',
   titleAdd: 'Remix',
   author: 'Стоункат, Psychopath',
   album: 'Non Stop',
   time: '4.12',
+}
+
+const track = {
+  id: 27,
+  name: 'Hangtime',
+  author: 'Wova',
+  release_date: '1991-09-06',
+  genre: 'Электронная музыка',
 }
 
 const PlayListsSkeleton = {
@@ -35,9 +43,9 @@ const content = [
 ]
 
 const PLAYLISTS = [
-  { title: "day's playlist", link: '#', image: 'img/playlist01.png' },
-  { title: "day's playlist", link: '#', image: 'img/playlist02.png' },
-  { title: "day's playlist", link: '#', image: 'img/playlist03.png' },
+  { title: "day's playlist", link: '#', image: 'img/playlist01.png', id: '0' },
+  { title: "day's playlist", link: '#', image: 'img/playlist02.png', id: '1' },
+  { title: "day's playlist", link: '#', image: 'img/playlist03.png', id: '2' },
 ]
 
 export { USER, PlayLists, track, PlayListsSkeleton, content, PLAYLISTS }

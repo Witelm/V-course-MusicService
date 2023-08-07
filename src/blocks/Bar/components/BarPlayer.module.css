@@ -90,6 +90,10 @@
   stroke: #696969;
 }
 
+.notactive {
+  stroke: #696969;
+}
+
 .btn_icon:hover svg {
   fill: transparent;
   stroke: #acacac;
@@ -104,4 +108,9 @@
 
 .btn {
   cursor: pointer;
+}
+
+.active {
+  fill: transparent;
+  stroke: #ffffff;
 }

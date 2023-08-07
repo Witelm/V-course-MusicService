@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import s from './NavMenu.module.css'
 import { useThemeContext, themes } from '../context/Context'
+import { useDispatch } from 'react-redux'
+import { favoriteShow } from '../../store/actions/creators/favorite'
 
 const themeDarkSvg = (
   <svg
@@ -67,6 +69,16 @@ const themeLightSvg = (
 )
 
 function NavMenu() {
+  const dispatch = useDispatch()
+
+  const handleFavorite = () => {
+    dispatch(favoriteShow('favorite'))
+  }
+
+  const handleMain = () => {
+    dispatch(favoriteShow('all'))
+  }
+
   const deleteUser = () => {
     localStorage.removeItem('user')
   }
@@ -78,8 +90,9 @@ function NavMenu() {
       <ul className={s.list}>
         <li className={s.item}>
           <a
-            href="http://"
+            href="#"
             className={s.link}
+            onClick={handleMain}
             style={{
               color: theme.color,
             }}
@@ -89,7 +102,8 @@ function NavMenu() {
         </li>
         <li className={s.item}>
           <a
-            href="http://"
+            href="#"
+            onClick={handleFavorite}
             className={s.link}
             style={{
               color: theme.color,

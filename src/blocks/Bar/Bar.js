@@ -1,18 +1,26 @@
 import BarPlayer from './components/BarPlayer'
 import BarVolume from './components/BarVolume'
 import s from './Bar.module.css'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useThemeContext } from '../context/Context'
 
-function Bar() {
+function Bar(audioSrc) {
   const [completed, setCompleted] = useState('0')
-  const handleDuration = (e) => {
-    console.log(e.target)
-  }
-
+  const [statePlay, setPlay] = useState(false)
   const [volumeState, setVolume] = useState(0.5)
 
+  const handleDuration = (e) => {}
+
+  const audioRef = useRef(null)
+
   const { theme } = useThemeContext()
+
+  const PositionX = (e) => {
+    const temp = Math.round(
+      (e.clientX / e.target.offsetWidth) * audioRef.current.duration
+    )
+    audioRef.current.currentTime = temp
+  }
 
   return (
     <div
@@ -23,13 +31,20 @@ function Bar() {
       }}
     >
       <div className={s.content}>
-        <div className={s.player_progress} onClick={handleDuration}>
+        <div className={s.player_progress} onClick={PositionX}>
           <div className={s.prodress_bar} style={{ width: `${completed}%` }}>
             <span className={s.propgress_span}></span>
           </div>
         </div>
         <div className={s.player_block}>
-          <BarPlayer setCompleted={setCompleted} volumeState={volumeState} />
+          <BarPlayer
+            audioSrc={audioSrc}
+            setCompleted={setCompleted}
+            audioRef={audioRef}
+            volumeState={volumeState}
+            statePlay={statePlay}
+            setPlay={setPlay}
+          />
           <BarVolume volumeState={volumeState} setVolume={setVolume} />
         </div>
       </div>

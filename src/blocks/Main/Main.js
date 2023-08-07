@@ -28,7 +28,7 @@ function Main(props) {
   ) : (
     <main className={s.main}>
       <Nav />
-      <CenterBlock array={PlayListItem} track={track} />
+      <CenterBlock />
       <SideBar {...PlayLists} />
     </main>
   )

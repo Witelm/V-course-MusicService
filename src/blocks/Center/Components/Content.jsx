@@ -1,4 +1,15 @@
 import s from './Content.module.css'
+import PlayListItem from '../../Playlist/PlayListItem'
+
+const FetchContent = (props) => {
+  return (
+    <div className={s.playlist}>
+      {props.data.map((track, index) => (
+        <PlayListItem {...track} key={index} />
+      ))}
+    </div>
+  )
+}
 
 export const Content = (props) => {
   return (
@@ -13,11 +24,8 @@ export const Content = (props) => {
           </svg>
         </div>
       </div>
-      <div className={s.playlist}>
-        {Array.from({ length: 11 }).map((item, index) => (
-          <props.array {...props.track} key={index} />
-        ))}
-      </div>
+
+      <FetchContent {...props} />
     </div>
   )
 }

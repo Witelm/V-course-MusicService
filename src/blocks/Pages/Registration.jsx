@@ -1,40 +1,67 @@
 import React, { useState } from 'react'
 import s from './Registration.module.css'
+import { userFunck } from '../../store/actions/thunk/user'
+import { useDispatch, useSelector } from 'react-redux'
 
 export const Registration = (props) => {
-  const [state, setState] = useState(false)
+  const dispatch = useDispatch()
+  const [isRegistered, setIsRegistered] = useState(false)
+
+  const [stateUser, setStateUser] = useState('')
+  const [stateEmail, setStateEmail] = useState('')
+  const [statePass, setStatePass] = useState('')
+  const [statePassTwo, setStatePassTwo] = useState('')
+
+  const user = useSelector((state) => state.user.username)
+
   const handleState = () => {
-    setState(true)
+    setIsRegistered((prevState) => !prevState)
   }
 
-  const ComeButton = (
-    <button className={s.btn} onClick={props.handleLogin}>
-      Войти
-    </button>
-  )
-  const RegisterButton = (
-    <button className={`${state ? s.btn : s.btn_reg}`} onClick={handleState}>
-      Зарегистрироваться
-    </button>
-  )
+  // const inputUser = {
+  //   username: 'try',
+  //   password: 'bed123454321',
+  //   email: 'try@mail.ru',
+  // }
 
-  const SendButton = (
-    <button
-      className={s.btn}
-      onClick={() => {
-        const temp = document.querySelectorAll('input')[0].value
-        localStorage.setItem('user', JSON.stringify(temp))
-        setState(false)
+  // const inputUser = {
+  //   username: '.as',
+  //   password: '.as123454321',
+  //   email: 'as@mail.ru',
+  // }
+  // const inputUser = {
+  //   username: 'qq',
+  //   password: 'qq123454321',
+  //   email: 'qq@mail.ru',
+  // }
 
-        console.log('send request', temp, localStorage)
+  const handleLogin = () => {
+    const inputUser = {
+      username: stateUser,
+      password: statePass,
+      email: stateEmail,
+    }
+    dispatch(userFunck(inputUser, 'login'))
+    clearForm()
+  }
 
-        document.querySelectorAll('input')[0].value = ''
-      }}
-    >
-      Зарегистрироваться
-    </button>
-  )
-  const Input = <input className={s.input} placeholder="Повторите пароль" />
+  const handleSignup = () => {
+    const inputUser = {
+      username: stateUser,
+      password: statePass,
+      email: stateEmail,
+    }
+    dispatch(userFunck(inputUser, 'signup'))
+    clearForm()
+    setIsRegistered(false)
+  }
+
+  const clearForm = () => {
+    setStateUser('')
+    setStateEmail('')
+    setStatePass('')
+    setStatePassTwo('')
+  }
 
   return (
     <div className={s.wrapper}>
@@ -44,12 +71,58 @@ export const Registration = (props) => {
             <div>
               <img src="img/Icon.svg" alt="" />
             </div>
+            {isRegistered ? (
+              <>
+                <input
+                  className={s.input}
+                  placeholder="Логин"
+                  value={stateUser}
+                  onChange={(e) => setStateUser(e.target.value)}
+                />
+                <input
+                  className={s.input}
+                  placeholder="email"
+                  value={stateEmail}
+                  onChange={(e) => setStateEmail(e.target.value)}
+                />
+              </>
+            ) : (
+              <input
+                className={s.input}
+                placeholder="Логин (email)"
+                value={stateEmail}
+                onChange={(e) => setStateEmail(e.target.value)}
+              />
+            )}
+            <input
+              className={s.input}
+              placeholder="Пароль"
+              value={statePass}
+              onChange={(e) => setStatePass(e.target.value)}
+            />
 
-            <input className={s.input} placeholder="Логин" />
-            <input className={s.input} placeholder="Пароль" />
-
-            {state ? Input : ComeButton}
-            {state ? SendButton : RegisterButton}
+            {isRegistered ? (
+              <>
+                <input
+                  className={s.input}
+                  placeholder="Повторите пароль"
+                  value={statePassTwo}
+                  onChange={(e) => setStatePassTwo(e.target.value)}
+                />
+                <button className={s.btn} onClick={handleSignup}>
+                  Зарегистрироваться
+                </button>
+              </>
+            ) : (
+              <>
+                <button className={s.btn} onClick={handleLogin}>
+                  Войти
+                </button>
+                <button className={s.btn} onClick={handleState}>
+                  Зарегистрироваться
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>
