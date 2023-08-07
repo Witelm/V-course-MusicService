@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import s from './Registration.module.css'
 import { userFunck } from '../../store/actions/thunk/user'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 export const Registration = (props) => {
   const dispatch = useDispatch()
@@ -11,8 +11,6 @@ export const Registration = (props) => {
   const [stateEmail, setStateEmail] = useState('')
   const [statePass, setStatePass] = useState('')
   const [statePassTwo, setStatePassTwo] = useState('')
-
-  const user = useSelector((state) => state.user.username)
 
   const handleState = () => {
     setIsRegistered((prevState) => !prevState)
